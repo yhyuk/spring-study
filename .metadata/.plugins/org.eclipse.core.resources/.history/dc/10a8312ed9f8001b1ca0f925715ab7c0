@@ -1,0 +1,16 @@
+package com.test.spring.di.ex06;
+
+public class Ex06 {
+	
+	public static void main(String[] args) {
+		
+		// Student 객체를 생성 + 사용 
+		m1();
+		
+	} // main
+
+	private static void m1() {
+		
+	}
+
+}

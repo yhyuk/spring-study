@@ -1,0 +1,18 @@
+package com.test.spring.di.ex02;
+
+import com.test.spring.di.ex01.Util;
+
+public class Ex02 {
+	
+	public static void main(String[] args) {
+		
+		// 요구사항: 사용자에게 이름을 입력받아 인사하시오.
+		Util util = new Util();
+		
+		String name = util.getName(); // 업무 위임(Delegate)
+		System.out.printf("안녕하세요. %s님\n", name);
+		
+	}
+
+}	
+			

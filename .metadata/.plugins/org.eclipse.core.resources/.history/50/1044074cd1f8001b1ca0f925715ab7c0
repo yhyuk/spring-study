@@ -1,0 +1,5 @@
+package com.test.spring.di.ex03;
+
+public class File {
+
+}

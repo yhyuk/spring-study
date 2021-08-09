@@ -1,0 +1,26 @@
+package com.test.spring.di.ex02;
+
+import java.util.Scanner;
+
+public class Ex02 {
+	
+	public static void main(String[] args) {
+		
+		// 요구사항: 사용자에게 이름을 입력받아 인사하시오.
+		
+		Scanner scan = new Scanner(System.in);
+		
+		Util util = new Util(scan); // 의존 주입(DI) Scanner 전달
+		String name = util.getName(); 
+		System.out.printf("안녕하세요. %s님\n", name);
+		
+		
+		Util util2 = new Util(); // 의존 주입(DI)
+		util2.setScan(scan); 
+		String name2 = util.getName();
+		System.out.printf("안녕하세요. %s님\n", name2);
+		
+	}
+
+}	
+			

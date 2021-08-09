@@ -1,0 +1,23 @@
+package com.test.spring.di.ex02;
+
+import java.util.Scanner;
+
+public class Util {
+	
+	public String getName() {
+		
+		/*
+		 * 	Util 객체는 Scanner 객체를 의존한다.
+		 * 	- 의존 객체 Scanner를 누가 생성했는가? > Util 객체가 생성했다. > 왜? > 필요하니까!!
+		 * 
+		 */
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("이름: ");
+		String name = scan.nextLine();
+		
+		return name;
+	}
+
+}

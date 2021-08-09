@@ -1,0 +1,34 @@
+package com.test.spring.di.ex06;
+
+public class Ex06 {
+	
+	public static void main(String[] args) {
+		
+		// Student 객체를 생성 + 사용 
+		
+		//m1();
+		m2();
+		
+	} // main
+
+	private static void m2() {
+		
+		// 객체 생성을 개발자가 직접하지 않고 스프링 프레임 워크에게 그 역할을 맡기기
+		//	-> 스프링에게 Student 객체를 만들어 주세요~
+		
+		// 스프링 설정 파일(config06.xml)에 정의되어 있는 s1이라는 <bean>을 통해서 객체 생성하기
+		
+	}
+
+	private static void m1() {
+		
+		// 평범한 객체 생성 방식(new 연산자 + 생성자)
+		Student s1 = new Student();
+		
+		s1.setName("홍길동");
+		s1.setSchool("역삼 중학교");
+		
+		System.out.println(s1);
+	}
+
+}

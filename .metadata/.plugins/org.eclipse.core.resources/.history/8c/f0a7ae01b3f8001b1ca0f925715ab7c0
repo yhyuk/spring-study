@@ -1,0 +1,10 @@
+package com.test.spring.di.ex02;
+
+public class Util {
+	
+	public String getName() {
+		
+		
+	}
+
+}
