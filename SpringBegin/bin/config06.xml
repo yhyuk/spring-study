@@ -26,7 +26,7 @@
 			- <constructor-arg>: 생성자 매개변수를 연결해주는 역할 
 		-->
 		<bean id="s2" class="com.test.spring.di.ex06.Student">
-			<constructor-arg value="아무개"></constructor-arg>
+			<constructor-arg value="홍길동"></constructor-arg>
 			<constructor-arg value="고등학교"></constructor-arg>
 		</bean>
 		
@@ -35,7 +35,7 @@
 			- <property name="setter명" value="값">
 		-->
 		<bean id="s3" class="com.test.spring.di.ex06.Student">
-			<property name="name" value="하하하"></property>
+			<property name="name" value="아무개"></property>
 			<property name="school" value="대학교"></property>
 		</bean>
 		

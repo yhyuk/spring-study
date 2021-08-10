@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- config07.xml -->
+	
+
+	<!-- File 객체는 Service 객체의 의존 객체이다. -->
+	<bean id="file" class="com.test.spring.di.ex07.File"></bean>
+	<bean id="db" class="com.test.spring.di.ex07.DB"></bean>
+	
+	
+	<!-- Spring DI -->
+	<!-- File과 Service의 의존 관계를 자바가 아닌 XML에서 연결 시킨다. -->
+	<bean id="service" class="com.test.spring.di.ex07.Service">
+		<constructor-arg ref="db"></constructor-arg>
+	</bean>
+	
+
+</beans>

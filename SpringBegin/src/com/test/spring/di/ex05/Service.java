@@ -6,7 +6,6 @@ public class Service {
 
 	// 의존 주입을 구현하는 단계
 	
-	
 	// 2단계. 의존객체가 저장될 멤버 변수를 만든다.
 	private IData data;
 	
