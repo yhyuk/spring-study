@@ -62,28 +62,28 @@ public class Memo {
 	*/
 	
 	
-	public void memberadd(String memo) throws Exception {
+	public void add(String memo) throws Exception {
 		
 		// 1. 주 업무 - 메모 쓰기
 		System.out.printf("메모 쓰기: %s\n", memo);
 		
 		// afterthrowing 확인을 위한 일부로 에러내기
-		Random rnd = new Random();
-		
-		if (rnd.nextInt(10) %2 == 0) {
-			throw new Exception("메모 쓰기 중 에러 발생");
-		}
+//		Random rnd = new Random();
+//		
+//		if (rnd.nextInt(10) %2 == 0) {
+//			throw new Exception("메모 쓰기 중 에러 발생");
+//		}
 		
 	}
 
-	public void memberedit(int seq, String memo) {
+	public void edit(int seq, String memo) {
 		
 		// 2. 주 업무 - 메모 수정
 		System.out.printf("메모 수정: %d번 메모를 수정했습니다.\n", seq);
 
 	}
 
-	public void memberdel(int seq) {
+	public void del(int seq) {
 		
 		// 3. 주 업무 - 메모 삭제
 		System.out.printf("메모 삭제: %d번 메모를 삭제했습니다.\n", seq);

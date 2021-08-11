@@ -20,15 +20,15 @@ public class Main {
 		
 		// 1. 주 업무 실행 - 메모 쓰기
 		try {
-			memo.memberadd("메모를 작성합니다.");
+			memo.add("메모를 작성합니다.");
 		} catch (Exception e) {
 		}
 		
 		// 2. 주 업무 실행 - 메모 수정
-		memo.memberedit(10, "수정합니다. ");
+		memo.edit(10, "수정합니다. ");
 		
 		// 3. 주 업무 실행 - 메모 삭제
-		memo.memberdel(10);
+		memo.del(10);
 		
 		// 4. 주 업무 실행 - 메모 읽기
 		memo.read(5);

@@ -24,5 +24,29 @@
 	<context:component-scan base-package="com.test.spring" />
 	
 	
+	<!-- 
+		<bean> 선언
+		- Spring에서 <bean>은 <beans:bean>을 해줘한다.(규칙)
+		- <bean> == <beans:bean>
+		- 기능은 기존 <bean>과 동일하다.
+	-->
 	
+	<!-- 가상 주소 매핑 -->
+	<beans:bean class="com.test.spring.HelloController" name="/hello.action"></beans:bean>
+	
+		
 </beans:beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

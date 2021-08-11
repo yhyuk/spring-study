@@ -33,15 +33,15 @@ public class Logger {
 	
 	public void around(ProceedingJoinPoint joinPoint) {
 
-		//보조업무 -> 주업무 -> 보조업무
+		// 보조업무 -> 주업무 -> 보조업무
 
 		long start = System.currentTimeMillis();
 		System.out.println("[log] 시간 기록을 시작합니다.");
 
-		//주업무 -> 참조
+		// 주업무 -> 참조
 		try {
 
-			//포인트컷의 호출을 대리 참조
+			// 포인트컷의 호출을 대리 참조
 			// -> memo.add("")와 동일한 참조
 			joinPoint.proceed();
 

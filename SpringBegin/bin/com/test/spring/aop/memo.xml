@@ -38,18 +38,18 @@
 			<aop:pointcut expression="execution(public int com.test.spring.aop.Memo.search(String))" id="m2"/>
 			
 			<!-- logger 보조 업무 객체의 어떤 보조 업무(메소드)와 어떤 주 업무(포인트 컷)을 어떤 형태로 결합시킬지? -->
-			<!-- <aop:after method="log" pointcut-ref="m1" /> -->
+			<!-- <aop:after method="log" pointcut-ref="m1" /> --> 
 
-			<!-- Logger.before() -> Memo.add() -->
-			<!-- <aop:before method="before" pointcut-ref="m1" /> -->
+			<!-- Before: Logger.before() -> Memo.add() -->
+			<aop:before method="before" pointcut-ref="m1" />
 
-			<!-- Memo.add() -> Logger.after() -->
-			<!-- <aop:after method="after" pointcut-ref="m1" /> -->
-
+			<!-- After: Memo.add() -> Logger.after() -->
+			<aop:after method="after" pointcut-ref="m1" />
+			
+			<!-- Around: Logger.before() -> Memo.add() -> Logger.after() -->
 			<!-- <aop:around method="around" pointcut-ref="m1" /> -->
 
 			<!-- <aop:after-throwing method="afterthrowing" pointcut-ref="m1" throwing="e" /> -->
-
 			<!-- <aop:after-returning method="afterreturning" pointcut-ref="m2" returning="obj" /> -->
 			
 		</aop:aspect>		
@@ -76,8 +76,8 @@
 						-> 클래스를 분리한다. (but 보조업무를 위해 분리는 좀 그렇다!)
 						-> 공통점을 만든다.. (메소드명에 member 붙이기)  
 			-->
-			<aop:pointcut expression="execution(public * com.test.spring.aop.Memo.member*(..))" id="m3"/>
-			<aop:before method="check" pointcut-ref="m3"/>
+			<!-- <aop:pointcut expression="execution(public * com.test.spring.aop.Memo.member*(..))" id="m3"/>
+			<aop:before method="check" pointcut-ref="m3"/> -->
 			
 			
 		</aop:aspect>		
