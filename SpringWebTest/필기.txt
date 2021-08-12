@@ -46,7 +46,6 @@
 	
 	1. URL 요청
 		- http://localhost8090/spring/hi.action
-		
 	
 	2. DispatcherServlet 응답(호출)
 		- web.xml
@@ -100,8 +99,14 @@
 	views > data > add.jsp, addok.jsp
 	
 	
+	-------------------------------------------------------------------------------------------
 	
+	2021.08.12
+	의존 주입 테스트
+	com.test.spring > DIController.java
+					> Work.java
 	
+	views > di > di.jsp
 	
 	
 	

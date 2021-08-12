@@ -1,0 +1,56 @@
+
+	메모장 만들기
+	
+	1. 스프링 버전 변경
+		- Java 1.11
+		- Spring 4.3.8
+	
+	2. pom.xml(Maven)
+		- 프로젝트에 필요한 라이브러리 다운로드
+		- lombok.jar
+		- ojdbc6.jar (수동 설치)
+	
+	3. web.xml
+		- 스프링 요청 주소 확장자 변경: *.memo
+		- 인코딩 필터 추가
+		
+	4. root-context.xml
+		- 아직 X
+		
+	5. servlet-context.xml
+		- 아직 X
+		
+	6. Bootstrap + jQuery 설치
+		- webapp > resources > 복사(설치)
+		- webapp > inc > 복사(설치)
+	
+	7. SQL
+		- SpringMemo > db.sql
+	
+	8. 파일생성
+		- com.test.spring > MemoController.java
+						  > MemoDao.java
+						  > MemoDTO.java
+						  > DBUtil.java
+		- views > list.jsp 
+				> add.jsp
+				> addok.jsp
+				> delok.jsp
+				> template.jsp
+ 		
+ 		- webapp > resources > css > main.css
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  

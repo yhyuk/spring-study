@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- test.xml -->
+<!--  
+	Mapper 파일
+	- SQL을 작성하는 파일
+-->
+<mapper namespace="test">
+	
+	<!--  
+		<insert id=""></insert>
+		<update id=""></update>
+		<delete id=""></delete>
+		<select id=""></select>
+	-->
+	
+	<insert id="m1">
+		insert into tblMemo (seq, name, memo, regdate, category)
+			values (seqMemo.nextVal, '홍길동', 'MyBatis 테스트', default, 'mybatis')
+	</insert>
+	
+	<!-- 매개변수가 넘어올 시 무조건 parameterType="자료형" -->
+	<delete id="m2" parameterType="Integer">
+		delete from tblMemo where seq = #{ seq }
+	</delete>
+	
+	<update id="m3" parameterType="dto">
+		update tblMemo set
+			nmae = #{ name }, <!-- 넘어온 getName()을 name으로 줄여준다. -->
+			memo = #{ memo }, <!--  어떤 자료형이든 호따옴표를 절대 붙이면 안된다.!! -->
+			category = #{ category }
+		where seq = #{ seq }
+	</update>
+	
+	<!-- 매개변수가 HashMap이면 parameterType="map" -->
+	<update id="m4" parameterType="map">
+		update tblMemo set
+			category = #{ newcategory }
+		where category = #{ category }
+	</update>
+	
+</mapper>
