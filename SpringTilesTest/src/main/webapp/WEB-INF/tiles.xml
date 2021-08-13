@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configureation 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<!-- tiles는 모든 것이 이 파일 안에서 구현된다. -->
+<tiles-definitions>
+
+	<!-- 
+		<definition> 태그 1개당 레이아웃 페이지 1장 
+		: <definition name="test">  ==>  member.jsp(레이아웃 페이지)
+		
+		레이아웃 페이지의 역할
+		- 업무 구현 X
+		- 틀(layout) 만들기 O > 전체 구성을 디자인하는 페이지
+		
+		<put-attribute>
+		- 레이아웃 페이지(member.jsp)에서 사용할 조각 페이지에 대한 정의
+	-->
+	
+	<!-- 	
+	<definition name="info" template="/WEB-INF/views/layout/member.jsp">
+	
+		공통 메뉴
+		<put-attribute name="mainmenu" value="/WEB-INF/views/inc/mainmenu.jsp"></put-attribute>
+		<put-attribute name="submenu" value="/WEB-INF/views/inc/submenu_member.jsp"></put-attribute>
+		공통 라이브러리
+		<put-attribute name="asset" value="/inc/asset.jsp"></put-attribute>
+		<put-attribute name="asset_member" value="/inc/asset_member.jsp"></put-attribute>
+		주 업무 페이지
+		<put-attribute name="content" value="/WEB-INF/views/member/info.jsp"></put-attribute>
+		
+	</definition>
+
+	<definition name="point" template="/WEB-INF/views/layout/member.jsp">
+		공통 메뉴
+		<put-attribute name="mainmenu" value="/WEB-INF/views/inc/mainmenu.jsp"></put-attribute>
+		<put-attribute name="submenu" value="/WEB-INF/views/inc/submenu_member.jsp"></put-attribute>
+		공통 라이브러리
+		<put-attribute name="asset" value="/inc/asset.jsp"></put-attribute>
+		<put-attribute name="asset_member" value="/inc/asset_member.jsp"></put-attribute>
+		주 업무 페이지
+		<put-attribute name="content" value="/WEB-INF/views/member/point.jsp"></put-attribute>
+	</definition>
+
+	<definition name="history" template="/WEB-INF/views/layout/member.jsp">
+		공통 메뉴
+		<put-attribute name="mainmenu" value="/WEB-INF/views/inc/mainmenu.jsp"></put-attribute>
+		<put-attribute name="submenu" value="/WEB-INF/views/inc/submenu_member.jsp"></put-attribute>
+		공통 라이브러리
+		<put-attribute name="asset" value="/inc/asset.jsp"></put-attribute>
+		<put-attribute name="asset_member" value="/inc/asset_member.jsp"></put-attribute>
+		주 업무 페이지
+		<put-attribute name="content" value="/WEB-INF/views/member/history.jsp"></put-attribute>
+	</definition> 
+	-->
+	
+	<!-- 
+		우선 만들었지만... 위에 처럼만들면 페이지 하나당 definition 하나? .. 너무 많은데?
+		저렇게 할거면 tiles 안하는게 나음 (선생님 피셜) 그렇다면.. 기존의 definition보다 축소시켜보자.
+	-->
+	
+	<!-- 	
+	<definition name="member.*" template="/WEB-INF/views/layout/member.jsp">
+		공통 메뉴
+		<put-attribute name="mainmenu" value="/WEB-INF/views/inc/mainmenu.jsp"></put-attribute>
+		<put-attribute name="submenu" value="/WEB-INF/views/inc/submenu_member.jsp"></put-attribute>
+		공통 라이브러리
+		<put-attribute name="asset" value="/inc/asset.jsp"></put-attribute>
+		<put-attribute name="asset_member" value="/inc/asset_member.jsp"></put-attribute>
+		주 업무 페이지
+		<put-attribute name="content" value="/WEB-INF/views/member/{1}.jsp"></put-attribute>
+	</definition> 
+	-->
+	
+	<!-- 
+	 	1. definition name에 와일드카드(*)를 적는다. 
+	 		- 모든 페이지 name을 받음
+	 		- 하지만.. 주 업무 페이지의 이름은? info, point, history
+	 	
+	 	2. {1}을 표시해두면 와일드카드에 들어오는 이름으로 인식한다.
+	 		- *에 만약 info가 온다면 {1} = info
+	-->
+	
+	<!-- 	
+	<definition name="admin.*" template="/WEB-INF/views/layout/admin.jsp">
+		공통 메뉴
+		<put-attribute name="mainmenu" value="/WEB-INF/views/inc/mainmenu.jsp"></put-attribute>
+		<put-attribute name="submenu" value="/WEB-INF/views/inc/submenu_admin.jsp"></put-attribute>
+		공통 라이브러리
+		<put-attribute name="asset" value="/inc/asset.jsp"></put-attribute>
+		<put-attribute name="asset_admin" value="/inc/asset_admin.jsp"></put-attribute>
+		주 업무 페이지
+		<put-attribute name="content" value="/WEB-INF/views/admin/{1}.jsp"></put-attribute>
+	</definition> 
+	-->
+	
+	<!-- 
+		관리자 까지 만들고 와일드카드로 만들고나니 문제가 생겼다. 
+		회원/관리자의 name이 모두 * 이므로 구별을 못함.
+			> return 이름에 member, admin의 이름으로 . 붙여서 식별해주기
+	-->
+	
+	
+	<!--  
+		[ 개선점 ]
+		위에 definition 2개 member, admin 생겼다. 이 마저도 1개로 합칠 수 있다!!
+		와일드카드 2개 *.*
+		{1}, {2}
+	-->
+	
+	<!--  
+		member.info.test
+		member.info
+		admin.log
+	-->
+	
+	<definition name="*.*" template="/WEB-INF/views/layout/member.jsp">
+		<!-- 공통 메뉴 -->
+		<put-attribute name="mainmenu" value="/WEB-INF/views/inc/mainmenu.jsp"></put-attribute>
+		<put-attribute name="submenu" value="/WEB-INF/views/inc/submenu_{1}.jsp"></put-attribute>
+		<!-- 공통 라이브러리 -->
+		<put-attribute name="asset" value="/inc/asset.jsp"></put-attribute>
+		<put-attribute name="asset_{1}" value="/inc/asset_{1}.jsp"></put-attribute>
+		<!-- 주 업무 페이지 -->
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+	</definition> 
+	
+	<!--  
+		[ 정리 ]
+		1. 요청 메소드(URL) 6개 -> <definition> x 6개
+		2. 요청 메소드(URL) 6개 -> member.* -> <definition> x 2개
+		3. 요청 메소드(URL) 6개 -> *.* -> <definition> x 1개
+		
+		
+		1번 방법 X
+		2번 방법, 3번 방법 중 하나 선택해서 프로젝트
+		
+	-->
+	
+	
+	
+</tiles-definitions>

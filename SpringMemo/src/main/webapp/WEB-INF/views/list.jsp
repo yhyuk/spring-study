@@ -54,8 +54,8 @@
    		<div>
    			<button type="button" class="btn btn-default" 
    				onclick="location.href='/spring/add.memo';">메모쓰기</button>
-   			<button type="button" class="btn btn-default" 
-   				onclick="location.href='/spring/list.memo';">전체보기</button>
+   			<!-- <button type="button" class="btn btn-default" 
+   				onclick="location.href='/spring/list.memo';">전체보기</button> -->
    		</div>
    		   
    		   

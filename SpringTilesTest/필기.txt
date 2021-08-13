@@ -1,0 +1,44 @@
+
+	Spring Tiles
+	- 사이트 레이아웃 작성 기술
+	- 페이지 틀 작업 > 페이지 간의 공통적인 틀 발생(상단 메뉴, 하단 정보, 로그인 창 등..)
+					 > template.jsp(레이아웃 용 페이지) x 복사(붙여넣기)
+					 
+	
+	동일한 업무 구현
+	1. SpringNonTilesTest	> 기존 방식 레이아웃 작성
+	2. SpringTilesTest 		> tiles 작성
+	
+	[ 업무 ] 
+	1. 회원 관련 업무
+		- 3단 구성
+	2. 관리자 관련 업무
+		- 3단 구성
+	
+	[ 기본 설정 ]
+	1. pom.xml
+		- dependency x 5개(tiles 라이브러리)
+	
+	2. web.xml
+		- 확장자 변경(*.action)
+	
+	3. root-context.xml
+		- X
+		
+	4. servlet-context.xml
+		- tiles 설정 
+		- tiles.xml 생성
+	
+	[ 파일 생성 ]
+	- SpringNonTilesTest에서 복사
+
+	Controller > MainController.java
+	webapp > inc, resources
+	
+	
+	
+	
+	
+	
+	
+	

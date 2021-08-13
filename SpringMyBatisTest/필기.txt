@@ -8,31 +8,31 @@
 		- 데이터베이스 작업 중 관련된 로그를 출력하는 기능	
 		
 	
-	[ 변경사항 ]
-	1. pom.xml
-		- Java 버전에 맞게 변경
-		- Spring 버전에 맞게 변경
+[ 변경사항 ]
+1. pom.xml
+	- Java 버전에 맞게 변경
+	- Spring 버전에 맞게 변경
+
+2. 라이브러리
+	- pom.xml
+	- ojdbc6.jar
+	- mybatis x n개
+	- log4j
+
+3. web.xml
+	- 확장자 변경(*.action)
+	- 인코딩 필터 추가 
 	
-	2. 라이브러리
-		- pom.xml
-		- ojdbc6.jar
-		- mybatis x n개
-		- log4j
+4. root-context.xml
+	- MyBatis 설정
+	- Log4j 설정 > 추가
 	
-	3. web.xml
-		- 확장자 변경(*.action)
-		- 인코딩 필터 추가 
-		
-	4. root-context.xml
-		- MyBatis 설정
-		- Log4j 설정 > 추가
-		
-	5. servlet-context.xml
-		- 설정 없음
-	
-	6. 파일 생성	
-		- com.test.mybatis > MyBatisController.java
-						   > MyBatisDAO
-						   > MyBatisDTO
-		- views > result.jsp
+5. servlet-context.xml
+	- 설정 없음
+
+6. 파일 생성	
+	- com.test.mybatis > MyBatisController.java
+					   > MyBatisDAO
+					   > MyBatisDTO
+	- views > result.jsp
 		

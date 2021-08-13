@@ -7,6 +7,7 @@
 <title></title>
 
 <%@ include file="/inc/asset.jsp" %>
+<%@ include file="/inc/asset_admin.jsp" %>
 
 <style>
    
@@ -14,12 +15,15 @@
 
 </head>
 <body>
-   	<!--  -->
-	<div class="container">
-		<h1 class="page-header"></h1>      
-   		   
-   	</div>   
-   
+   	<!-- admin/chart.jsp -->
+	<main>
+		<%@ include file="/WEB-INF/views/inc/mainmenu.jsp" %>
+		<div id="content">
+			관리자 차트 확인 코드 구현..
+		</div>
+		<%@ include file="/WEB-INF/views/inc/submenu_admin.jsp" %>
+	</main>
+	   
    	<script>
 	</script>
 </body>

@@ -1,0 +1,12 @@
+/* member.css */
+#submenu {
+	width: 200px;
+	height: 400px;
+	background-color: yellowgreen;
+	float: left;
+}
+
+#submenu a {
+	color: white;
+	margin: 0 10px;
+}

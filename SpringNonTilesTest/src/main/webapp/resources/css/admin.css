@@ -1,0 +1,20 @@
+/* admin.css */
+
+#content {
+	width: 100%;
+	float: none;
+}
+
+#footer {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	background-color: gold;
+	justify-content: center;
+	align-items: center;
+}
+
+#footer a {
+	color: white;
+	margin: 0 10px;
+}

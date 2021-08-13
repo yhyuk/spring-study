@@ -7,18 +7,22 @@
 <title></title>
 
 <%@ include file="/inc/asset.jsp" %>
+<%@ include file="/inc/asset_member.jsp" %>
 
 <style>
-   
+
 </style>
 
 </head>
 <body>
-   	<!--  -->
-	<div class="container">
-		<h1 class="page-header"></h1>      
-   		   
-   	</div>   
+   	<!-- member/info.jsp -->
+	<main>
+		<%@ include file="/WEB-INF/views/inc/mainmenu.jsp" %>
+		<%@ include file="/WEB-INF/views/inc/submenu_member.jsp" %>
+		<div id="content">
+			회원 정보 확인 코드 구현..
+		</div>
+	</main>
    
    	<script>
 	</script>

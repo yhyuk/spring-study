@@ -78,7 +78,7 @@ public class MemoController {
 		// 1. 매개변수 추가(String seq) 
 		
 		// 2. 
-		int result = dao.del(seq);
+		dao.del(seq);
 		
 		// 3.
 		try {

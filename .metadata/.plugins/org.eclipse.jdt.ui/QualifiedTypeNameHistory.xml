@@ -14,7 +14,6 @@
     <fullyQualifiedTypeName name="java.awt.Desktop.Action"/>
     <fullyQualifiedTypeName name="com.test.spring.DataDTO"/>
     <fullyQualifiedTypeName name="com.test.spring.DataDAO"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
     <fullyQualifiedTypeName name="jdk.jshell.Diag"/>
     <fullyQualifiedTypeName name="com.test.spring.DIController"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
@@ -28,4 +27,6 @@
     <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionTemplate"/>
     <fullyQualifiedTypeName name="com.test.mybatis.MyBatisController"/>
     <fullyQualifiedTypeName name="javax.print.attribute.HashAttributeSet"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
 </qualifiedTypeNameHistroy>
