@@ -54,23 +54,25 @@
 	</definition> 
 	-->
 	
+	<!-- ============================================================================================== -->
+	
 	<!-- 
 		우선 만들었지만... 위에 처럼만들면 페이지 하나당 definition 하나? .. 너무 많은데?
 		저렇게 할거면 tiles 안하는게 나음 (선생님 피셜) 그렇다면.. 기존의 definition보다 축소시켜보자.
 	-->
 	
-	<!-- 	
+	
 	<definition name="member.*" template="/WEB-INF/views/layout/member.jsp">
-		공통 메뉴
+		<!-- 공통 메뉴 -->
 		<put-attribute name="mainmenu" value="/WEB-INF/views/inc/mainmenu.jsp"></put-attribute>
 		<put-attribute name="submenu" value="/WEB-INF/views/inc/submenu_member.jsp"></put-attribute>
-		공통 라이브러리
+		<!-- 공통 라이브러리 -->
 		<put-attribute name="asset" value="/inc/asset.jsp"></put-attribute>
 		<put-attribute name="asset_member" value="/inc/asset_member.jsp"></put-attribute>
-		주 업무 페이지
+		<!-- 주 업무 페이지 -->
 		<put-attribute name="content" value="/WEB-INF/views/member/{1}.jsp"></put-attribute>
 	</definition> 
-	-->
+	
 	
 	<!-- 
 	 	1. definition name에 와일드카드(*)를 적는다. 
@@ -81,18 +83,20 @@
 	 		- *에 만약 info가 온다면 {1} = info
 	-->
 	
-	<!-- 	
+	
 	<definition name="admin.*" template="/WEB-INF/views/layout/admin.jsp">
-		공통 메뉴
+		<!-- 공통 메뉴 -->
 		<put-attribute name="mainmenu" value="/WEB-INF/views/inc/mainmenu.jsp"></put-attribute>
 		<put-attribute name="submenu" value="/WEB-INF/views/inc/submenu_admin.jsp"></put-attribute>
-		공통 라이브러리
+		<!-- 공통 라이브러리 -->
 		<put-attribute name="asset" value="/inc/asset.jsp"></put-attribute>
 		<put-attribute name="asset_admin" value="/inc/asset_admin.jsp"></put-attribute>
-		주 업무 페이지
+		<!-- 주 업무 페이지 -->
 		<put-attribute name="content" value="/WEB-INF/views/admin/{1}.jsp"></put-attribute>
 	</definition> 
-	-->
+	
+	
+	<!-- ============================================================================================== -->
 	
 	<!-- 
 		관리자 까지 만들고 와일드카드로 만들고나니 문제가 생겼다. 
@@ -114,16 +118,16 @@
 		admin.log
 	-->
 	
-	<definition name="*.*" template="/WEB-INF/views/layout/member.jsp">
-		<!-- 공통 메뉴 -->
+<!-- 	<definition name="*.*" template="/WEB-INF/views/layout/member.jsp">
+		공통 메뉴
 		<put-attribute name="mainmenu" value="/WEB-INF/views/inc/mainmenu.jsp"></put-attribute>
 		<put-attribute name="submenu" value="/WEB-INF/views/inc/submenu_{1}.jsp"></put-attribute>
-		<!-- 공통 라이브러리 -->
+		공통 라이브러리
 		<put-attribute name="asset" value="/inc/asset.jsp"></put-attribute>
 		<put-attribute name="asset_{1}" value="/inc/asset_{1}.jsp"></put-attribute>
-		<!-- 주 업무 페이지 -->
+		주 업무 페이지
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
-	</definition> 
+	</definition>  -->
 	
 	<!--  
 		[ 정리 ]

@@ -1,0 +1,59 @@
+
+
+	스프링 게시판
+	- Spring MVC Project + MyBatis + log4j + AOP + tiles
+	- 게시판(+ 소스 코드 첨부) > 코드 게시판
+	
+	1. pom.xml
+		- 자바, 스프링 버전
+		- jar(lombok, jdbc, mybatis, log4j, tiles)
+	
+	2. web.xml
+		- 확장자
+		- POST 인코딩 필터
+	
+	3. root-context.xml
+		- mybatis 설정 
+			- mapper 설정: code.xml
+			- 환경 설정 XML: myBatis.xml
+		- log4j 설정
+			- <bean> x 1
+			- log4j.xml 수정
+	
+	4. servlet-context.xml
+		- tiles 설정 (tiles.xml)
+		- AOP 설정 (aop태그 추가)
+		
+	------------------------------------------------------- 업무와 무관한 설정 끗!
+	
+	------------------------------------------------------- 업무와 상관있는 설정 시작
+	
+	5. 파일 생성
+		com.test.code
+			- CodeController.java			-- 컨트롤러
+			- CodeDAO.java					-- DAO
+			- CodeDTO.java					-- 게시판
+			- CodeLanguageDTO.java			-- 카테고리
+			- CodeLanguageLinkDTO.java		-- 게시판 <-> 카테고리
+			- CodeCommentDTO.java			-- 댓글
+	
+	6. 타일즈 적용
+		- views > layout > template.jsp 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

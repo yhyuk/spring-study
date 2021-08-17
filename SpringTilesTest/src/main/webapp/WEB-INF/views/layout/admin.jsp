@@ -6,14 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
 
 <tiles:insertAttribute name="asset"></tiles:insertAttribute>
 <tiles:insertAttribute name="asset_admin"></tiles:insertAttribute>
-
-<style>
-
-</style>
 
 </head>
 <body>

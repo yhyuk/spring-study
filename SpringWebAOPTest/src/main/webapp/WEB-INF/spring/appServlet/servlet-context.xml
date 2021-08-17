@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- @Controller와 같은 어노테이션을 사용 가능하게 해주는 선언 -->
+	<annotation-driven />
+	
+	<!-- AOP 설정 > AOP 작업을 어노테이션을 사용할 수 있게 해주는 선언 -->
+	<aop:aspectj-autoproxy />
+	
+	<!-- 단축 경로 사용 -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- 뷰 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!-- @Controller 어노테이션을 사용하는 클래스들이 들어있는 최상위 패키지 지정 -->
+	<!-- <context:component-scan base-package="com.test" /> -->
+	<!-- <context:component-scan base-package="com.test.spring, com.test.other" /> -->
+	<context:component-scan base-package="com.test.spring" />
+	
+	
+</beans:beans>
