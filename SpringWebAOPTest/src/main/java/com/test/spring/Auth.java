@@ -34,12 +34,12 @@ public class Auth {
 		//}
 		// for문 출력값 req, resp, session
 		// org.apache.catalina.connector.RequestFacade@583e6a4a
-		// org.apache.catalina.connector.ResponseFacade@3baa1149
+		// org.apache.catalina.connector.ResponseFacade@3baa1149e
 		// org.apache.catalina.session.StandardSessionFacade@6a4b3a0
 		
 		// 보조 업무 객체 내에서 request, response, session 등을 얻어오는 방법!!
-		HttpSession session = (HttpSession)joinPoint.getArgs()[2];
 		HttpServletResponse resp = (HttpServletResponse)joinPoint.getArgs()[1];
+		HttpSession session = (HttpSession)joinPoint.getArgs()[2];
 		
 		// 미 인증 사용자 일때.. 
 		if (session.getAttribute("id") == null) {
@@ -60,11 +60,12 @@ public class Auth {
 				writer.print("</body>");
 				writer.print("</html>");
 				
+				writer.close();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
 		
 	}
 

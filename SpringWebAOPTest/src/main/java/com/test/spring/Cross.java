@@ -22,12 +22,12 @@ public class Cross {
 	// 보조 업무 생성 + 주 업무 결합(Advice)
 	@Before("pc1()") // pc1()을 참조하겠다. 라는 뜻
 	public void m1() {
-		System.out.println("보조 업무를 실행합니다.");
+		System.out.println("before 보조 업무를 실행합니다.");
 	}
 	
 	@After("pc1()") 
 	public void m2() {
-		System.out.println("보조 업무2를 실행합니다.");
+		System.out.println("after 보조 업무를 실행합니다.");
 	}
 
 }
