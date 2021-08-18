@@ -1,6 +1,7 @@
 package com.test.code;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,15 +25,70 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "/list.action", method = { RequestMethod.GET })
-	public String list (HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+	public String list (HttpServletRequest req, 
+						HttpServletResponse resp, 
+						HttpSession session,
+						String lseq) {
 
+		List<CodeDTO> list = dao.list(lseq);
+		
+		for (CodeDTO dto : list) {
+			// 게시물 1개 > 글 번호 조건 > SQL > 언어 목록
+			List<CodeLanguageDTO> llist = dao.llist(dto.getSeq());
+			dto.setLlist(llist);
+			
+		}
+		
+		req.setAttribute("list", list);
+		
 		return "list";
 	}
 	
 	@RequestMapping(value = "/add.action", method = { RequestMethod.GET })
 	public String add (HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
 
+		List<CodeLanguageDTO> llist = dao.llistAll();
+		req.setAttribute("llist", llist);
+		
 		return "add";
+	}
+	
+	@RequestMapping(value = "/addok.action", method = { RequestMethod.POST })
+	public void addok (HttpServletRequest req, 
+						HttpServletResponse resp, 
+						HttpSession session,
+						CodeDTO dto,
+						String lseq) {
+		
+		// 1. 데이터 가져오기(subject, content, code, lseq)
+		// 2. DB 작업
+		// 	- 게시물 insert x 1
+		//	- 언어(링크) insert x N > lseq
+		
+		// 1.
+		dao.add(dto);
+		
+		// 방금 작성한 게시물 번호 가져오기
+		String seq = dao.getSeq();
+		
+		// 히든 태그로 넘겨받은 N개의 lseq(언어번호)
+		String[] temp = lseq.split(",");
+		
+		CodeLanguageLinkDTO lldto = new CodeLanguageLinkDTO();
+		lldto.setCseq(seq);
+		
+		for (String llseq : temp) {
+			// 선택한 언어 번호(llseq) + 방금 작성한 게시물 번호(seq)
+			lldto.setLseq(llseq);
+			dao.addLink(lldto);
+		}
+		
+		try {
+			resp.sendRedirect("/code/list.action");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@RequestMapping(value = "/view.action", method = { RequestMethod.GET })

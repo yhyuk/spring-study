@@ -4,8 +4,53 @@
 
 <mapper namespace="code">
 
+	<!-- 로그인 -->
 	<select id="signin" parameterType="String" resultType="String">
 		select id from tblCodeUser where id='hong' and pw=#{pw}
 	</select>
+	
+	<!-- 게시물 -->
+	<select id="list" resultType="dto" parameterType="String">
+		<!-- select * from tblCode order by seq desc; -->
+		
+		select * from tblCode c
+			<!-- MyBatis의 동적 쿼리이며 String은 예외발생이 있으므로 일종의 예약어인 언더바(_)를 붙인다.  -->
+			<if test="_parameter != null"> 
+			inner join tblCodeLanguageLink cll
+        		on c.seq = cll.cseq
+            		where cll.lseq = #{ lseq }
+			</if>
+				order by c.seq desc
+	</select>
+	
+	<!-- 특정 게시물에 관련된 언어 목록 -->
+	<select id="llist" parameterType="String" resultType="ldto">
+		select * from tblCodeLanguage cl
+    		left outer join (select * from tblCodeLanguageLink where cseq = #{ seq }) cll
+        		on cl.seq = cll.lseq
+        			order by cl.seq asc
+	</select>
+	
+	<!-- 모든 항목 목록 -->
+	<select id="llistAll" resultType="ldto">
+		select * from tblCodeLanguage order by seq asc
+	</select>
+	
+	<!-- 글 쓰기 -->
+	<insert id="add" parameterType="dto">
+		insert into tblCode (seq, subject, content, code, regdate)
+			values (seqCode.nextVal, #{ subject }, #{ content }, #{ code }, default)
+	</insert>
+	
+	<!-- 방금 쓴 글의 번호 -->	
+	<select id="getSeq" resultType="String">
+		select max(seq) from tblCode
+	</select>
+	
+	<!-- 방금 쓴글과 연결된 언어 추가  -->
+	<insert id="addLink" parameterType="cldto">
+		insert into tblCodeLanguageLink (seq, cseq, lseq) 
+			values (seqCodeLanguageLink.nextVal, #{ cseq }, #{ lseq })
+	</insert>
 	
 </mapper>
