@@ -40,6 +40,14 @@ public class CodeDAO {
 	public void addLink(CodeLanguageLinkDTO lldto) {
 		template.insert("code.addLink", lldto);
 	}
+
+	public void addComment(CodeCommentDTO dto) {
+		template.insert("code.addComment", dto);
+	}
+
+	public List<CodeCommentDTO> clist(String seq) {
+		return template.selectList("code.clist", seq);
+	}
 	
 	
 	

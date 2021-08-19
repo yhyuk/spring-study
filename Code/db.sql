@@ -340,3 +340,4 @@ select * from tblCode c
     where cll.lseq = 1
                 order by c.seq desc;
 
+select * from tblCodeComment;

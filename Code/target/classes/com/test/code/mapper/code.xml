@@ -53,4 +53,21 @@
 			values (seqCodeLanguageLink.nextVal, #{ cseq }, #{ lseq })
 	</insert>
 	
+	<!-- 글 보기 -->
+	<select id="get" parameterType="String" resultType="dto">
+		select * from tblCode where seq = #{ seq }
+	</select>
+	
+	<!-- 댓글 쓰기 -->
+	<insert id="addComment" parameterType="cdto">
+		insert into tblCodeComment (seq, content, beginline, endline, regdate, cseq)
+			values (seqCodeComment.nextVal, #{ content }, #{ beginline }, #{ endline }, dafulat, #{ cseq })
+	</insert>
+	
+	<!-- 댓글 목록 -->
+	<select id="clist" parameterType="String" resultType="cdto">
+		select * from tblCodeComment where cseq=#{ seq } order by beginline asc
+	</select>
+	
+	
 </mapper>

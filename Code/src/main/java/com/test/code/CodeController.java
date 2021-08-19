@@ -93,7 +93,18 @@ public class CodeController {
 	
 	@RequestMapping(value = "/view.action", method = { RequestMethod.GET })
 	public String view (HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+		
+		String seq;
+		// 댓글 목록 가져오기
+		List<CodeCommentDTO> clist = dao.clist(seq);
 
+		// 댓글 내용 개행 문자 처리
+		for (CodeCommentDTO cdto : clist) {
+			cdto.setContent(cdto.getContent().replace("\n", "<br>"));
+		}
+		
+		req.setAttribute("clist", clist);
+		
 		return "view";
 	}
 	
@@ -134,6 +145,25 @@ public class CodeController {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@RequestMapping(value = "/addcomment.action", method = { RequestMethod.POST })
+	public void addcomment (HttpServletRequest req, 
+							HttpServletResponse resp, 
+							HttpSession session,
+							CodeCommentDTO dto) {
+		
+		// 1. 데이터 가져오기
+		
+		// 2. DB 작업
+		dao.addComment(dto);
+		
+		// 3. view.action으로 돌아가기
+		try {
+			resp.sendRedirect("/code/view.action?seq=" + dto.getCseq());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

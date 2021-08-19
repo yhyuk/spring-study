@@ -51,35 +51,12 @@
 </div>
 
 <div class="list">
-    <div class="listitem" data-begin="3" data-end="7">
-        <span class="line-number">003: </span>
-        자바의 메인드입니다. 예약된 메소드이며, 프로그램의 시작점 역할을 합니다.
-        자바의 메인 메소드입니다. 예약된 메소드이며, 프로그램의 시작점 역할을 합니다.
-        자바의 메인 메소드입니다의 시작점 역할을 합니다.
-        자바의 메인 메소드입니다. 예약된 메소드이며, 프로그램의 시작점 역할을 합니다.
-        자바의 메인 메소드입니다. 예약된소드이며, 프로그램의 시작점 역할을 합니다.
+	<c:forEach items="${ clist }" var="cdto">
+    <div class="listitem" data-begin="${ cdto.beginline }" data-end="${ cdto.endline }">
+        <span class="line-number"></span>
+        ${ cdto.content }
     </div>
-    <div class="listitem" data-begin="10" data-end="20">
-        <span class="line-number">010: </span>
-        자바의 메인 메소드입니다. 예약된 메소이며, 프로그램의 시작점 역할을 합니다.
-        자바의 메인 메소드입다. 예약된 메소드이며, 며, 프로그램의 시작점 역할을 합니다.
-        자바의 메인 메소드입니다. 예약된 메소드이며, 프로그램의 시작점 역할을 합니다.
-    </div>
-    <div class="listitem" data-begin="12" data-end="15">
-        <span class="line-number">012: </span>
-        자바의 메인 메소드입니다. 예약된 메소이며, 프로그램의 시램의 시작점 역할을 합니다.
-    </div>
-    <div class="listitem" data-begin="17" data-end="25">
-        <span class="line-number">017: </span>
-        자바의 메인 메소드입니다. 예약된 메소드이며, 프로그램의의 시작점 역할을 합니다.
-        자바의 메인 메소드입니다. 예약된드이며, 프로그램의 시작점 역할을 합니다.
-        자바의 메인 메소드입니다. 예약된 메소드이며, 프로그램의 시 역할을 합니다.
-        자바의 메인 메소드입니다. 예약된 메소드이며, 프로그램의 시작점 역할을 합니다.
-    </div>
-    <div class="listitem" data-begin="20" data-end="28">
-        <span class="line-number">020: </span>
-        자바의 메인 메소드입니다. 예약된의 메인 메소드입니다. 예약된 메소이며, 프로그램의 시램의 시작점 역할을 합니다.
-    </div>
+	</c:forEach>
 </div>
 
 <div class="list selected-list"></div>
