@@ -1,0 +1,20 @@
+
+	웹 소켓, Web Socket
+	- Socket
+	
+	
+	1. pom.xml
+		- json
+		- lombok
+		
+	2. web.xml
+		- 주소
+		- 인코딩
+		
+	- SocketController
+	- ex01.jsp
+	
+	- ChatController
+	- ChatServer
+	
+	- chat.jsp
