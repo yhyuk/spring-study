@@ -10,7 +10,6 @@ public class CodeCommentDTO {
 	private String beginline;
 	private String endline;
 	private String regdate;
-	
 	private String cseq;
 
 }

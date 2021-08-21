@@ -12,7 +12,6 @@ public class CodeDTO {
 	private String content;
 	private String code;
 	private String regdate;
-	
 	private List<CodeLanguageDTO> llist; // 현재 게시물에 관련된 언어 목록
 
 }

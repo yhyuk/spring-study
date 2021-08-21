@@ -41,6 +41,10 @@ public class CodeDAO {
 		template.insert("code.addLink", lldto);
 	}
 
+	public CodeDTO get(String seq) {
+		return template.selectOne("code.get", seq);
+	}
+
 	public void addComment(CodeCommentDTO dto) {
 		template.insert("code.addComment", dto);
 	}

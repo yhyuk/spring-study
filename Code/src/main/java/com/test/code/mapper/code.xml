@@ -31,7 +31,7 @@
         			order by cl.seq asc
 	</select>
 	
-	<!-- 모든 항목 목록 -->
+	<!-- 모든 언어 -->
 	<select id="llistAll" resultType="ldto">
 		select * from tblCodeLanguage order by seq asc
 	</select>
@@ -53,20 +53,20 @@
 			values (seqCodeLanguageLink.nextVal, #{ cseq }, #{ lseq })
 	</insert>
 	
-	<!-- 글 보기 -->
+	<!-- 글보기 -->
 	<select id="get" parameterType="String" resultType="dto">
-		select * from tblCode where seq = #{ seq }
+		select * from tblCode where seq = #{seq}
 	</select>
 	
 	<!-- 댓글 쓰기 -->
 	<insert id="addComment" parameterType="cdto">
 		insert into tblCodeComment (seq, content, beginline, endline, regdate, cseq)
-			values (seqCodeComment.nextVal, #{ content }, #{ beginline }, #{ endline }, dafulat, #{ cseq })
+			values (seqCodeComment.nextVal, #{content}, #{beginline}, #{endline}, default, #{cseq})
 	</insert>
 	
 	<!-- 댓글 목록 -->
 	<select id="clist" parameterType="String" resultType="cdto">
-		select * from tblCodeComment where cseq=#{ seq } order by beginline asc
+		select * from tblCodeComment where cseq = #{seq} order by beginline asc
 	</select>
 	
 	

@@ -312,32 +312,52 @@ select * from tblCodeComment;
 commit;
 
 
-
 -- 현재 게시물에 관계된 언어만 관련되어 select
 select c.subject, cll.* from tblCode c
     inner join tblCodeLanguageLink cll
         on c.seq = cll.cseq;
 
--- 총 3개의 게시물
+
 -- 1번 게시물 -> Java
 -- 2번 게시물 -> SQL, Spring, XML
 -- 3번 게시물 -> Java, SQL, HTML, CSS, JavaScript
-
 select * from tblCodeLanguage cl
     left outer join (select * from tblCodeLanguageLink where cseq = 3) cll
         on cl.seq = cll.lseq;
-
-delete from tblCodeLanguage where seq = 8;
-commit;
-
-
-
 
 
 select * from tblCode c
     inner join tblCodeLanguageLink cll
         on c.seq = cll.cseq
-    where cll.lseq = 1
+            where cll.lseq = 6
                 order by c.seq desc;
 
-select * from tblCodeComment;
+
+
+
+
+
+
+select * from tblCode where seq = ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

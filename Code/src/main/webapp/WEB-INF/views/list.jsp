@@ -25,7 +25,7 @@
         </c:forEach>
         
     </div>
-    <div class="desc" onclick="location.href='/code/view.action';">
+    <div class="desc" onclick="location.href='/code/view.action?seq=${dto.seq}';">
         <h4>${ dto.subject }</h4>
         <div class="ellipsis">${ dto.content }</div>
     </div>
