@@ -138,7 +138,7 @@ function showCommentForm() {
 
 $('textarea[name=content]').keydown(function(evt) {
     if (evt.ctrlKey && evt.keyCode == 13) {
-        alert();
+		this.form.submit();    
     }
 });
 

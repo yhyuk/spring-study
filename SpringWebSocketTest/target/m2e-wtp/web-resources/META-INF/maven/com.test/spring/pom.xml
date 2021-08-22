@@ -119,31 +119,30 @@
 		
 		<!-- JSON -->
 		<dependency>
-		  	<groupId>com.googlecode.json-simple</groupId>
+			<groupId>com.googlecode.json-simple</groupId>
 		  	<artifactId>json-simple</artifactId>
 		  	<version>1.1.1</version>
 		</dependency>
 		
 		<!-- Lombok -->
 		<dependency>
-		 	 <groupId>org.projectlombok</groupId>
-		 	 <artifactId>lombok</artifactId>
-			 <version>1.18.20</version>
+		 	<groupId>org.projectlombok</groupId>
+		 	<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
 		</dependency>
 		
 		<!-- WebSocket -->
 		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-            <version>${org.springframework-version}</version>
+		   	<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		
-      	<dependency>
-         	<groupId>javax.websocket</groupId>
-         	<artifactId>javax.websocket-api</artifactId>
-         	<version>1.1</version>
-      	</dependency>
-		
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+		    <version>1.1</version>
+		</dependency>
 		       
 	</dependencies>
     <build>

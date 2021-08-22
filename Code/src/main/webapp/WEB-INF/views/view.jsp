@@ -39,6 +39,7 @@
     		
 	</div>
 
+	<!-- 댓글 작성 -->
     <div class="commentForm">
       	<form method="POST" action="/code/addcomment.action">
                 <textarea name="content" class="form-control content" required placeholder="1. Submit(Ctrl+Enter)

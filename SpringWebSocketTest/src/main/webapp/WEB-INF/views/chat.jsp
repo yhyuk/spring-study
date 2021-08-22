@@ -25,30 +25,25 @@
 <body>
    	<!-- chat.jsp -->
 	<div class="container">
-		<h1 class="page-header">Chat</h1>      
-   		
-   		<table class="table table-bordered">
-   			<tr>
-   				<td><input type="text" name="user" id="user" class="form-control" placeholder="유저명" /></td>
-   				<td>
-   					<button type="button" class="btn btn-default" id="btnConnect">연결</button>
-   					<button type="button" class="btn btn-default" id="btnDisconnect" disabled>종료</button>
-   				</td>
-   			</tr>
-   			<tr>
-   				<td colspan="2">
-   					<div id="list"></div>
-   				</td>
-   			</tr>
-   			<tr>
-   				<td colspan="2">
-   					<input type="text" name="msg" id="msg" placeholder="대화 내용을 입력하세요." class="form-control" disabled />
-   				</td>
-   			</tr>
-   		</table>
-   		
-   		   
-   	</div>   
+		<h1 class="page-header">Chat</h1>		
+		
+		<table class="table table-bordered">
+			<tr>
+				<td><input type="text" name="user" id="user" class="form-control" placeholder="유저명"></td>
+				<td>
+					<button type="button" class="btn btn-default" id="btnConnect">연결</button>
+					<button type="button" class="btn btn-default" id="btnDisconnect" disabled>종료</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><div id="list"></div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="text" name="msg" id="msg" placeholder="대화 내용을 입력하세요." class="form-control" disabled></td>
+			</tr>
+		</table>
+		
+	</div>	  
    
    	<script>
    	
@@ -74,26 +69,26 @@
 	   				
 	   				// 현재 사용자가 입장했다고 서버에게 통지(유저명 전달)
 	   				// -> 1#유저명
-	   				ws.send('1#' + ${'#user'}.val() + '#');
-	   				
-	   				$('#user').attr('readonly', true);
-	   				$('#btnConnect').attr('disabled', true);
-	   				$('#btnDisconnect').attr('disabled', false);
-	   				$('#msg').attr('disabled', false);
-	   				$('#msg').focus();
+					ws.send('1#' + $('#user').val() + '#');
+					
+					$('#user').attr('readonly', true);
+					$('#btnConnect').attr('disabled', true);
+					$('#btnDisconnect').attr('disabled', false);
+					$('#msg').attr('disabled', false);
+					$('#msg').focus();
 	   			};
 	
 	   			ws.onmessage = function (evt) {
 	   				// print('', evt.data);
-	   				let index = msg.indexOf("#", 2);
-	   				let no = msg.substring(0, 1);
-	   				let user = msg.substring(2, index);
-	   				let txt = msg.substring(index + 1);
+					let index = evt.data.indexOf("#", 2);
+					let no = evt.data.substring(0, 1); 
+					let user = evt.data.substring(2, index);
+					let txt = evt.data.substring(index + 1);
 	   				
 	   				if (no == '1') {
 	   					print2(user);
 	   				} else if (no == '2') {
-	   					print(uesr, txt);
+	   					print(user, txt);
 	   				} else if (no == '3') {
 	   					print3(user);
 	   				}
@@ -102,6 +97,7 @@
 	   			};
 	   			
 	   			ws.onclose = function (evt) {
+	   				console.log('소켓이 닫힙니다.');
 	   			};
 	   			
 	   			ws.onerror = function (evt) {
@@ -115,65 +111,78 @@
    			
    		});
    		
-   		function print(user, txt) {
-   			
-   			let temp = '';
-   			temp += '<div style="margin-bottom:3px;">';
-   			temp += '[' + user + '] ';
-   			
-   			
-   			
-   			$('#list').append(temp);
-   		}
-   		
-   		function print2(txt) {
-   			let temp = '';
-   			temp += '<div style="margin-bottom:3px;">';
-   			temp += "'" + user + "' 이(가) 접속했습니다.";
-   			temp += ' <span style="font-size:11px; color:#777;">' + new.Date().toLocaleTimeString() + '</span>';
-   			
-   			temp += '</div>';
-   		}
 
-   		function print3(txt) {
-   			let temp = '';
-   			temp += '<div style="margin-bottom:3px;">';
-   			temp += "'" + user + "' 이(가) 접속했습니다.";
-   			temp += ' <span style="font-size:11px; color:#777;">' + new.Date().toLocaleTimeString() + '</span>';
-   			
-   			temp += '</div>';
-   		}
-   		
-   		$('#user').keydown(function() {
-   			if (event.keyCode == 13) {
-   				$('#btnConnect').click();
-   			}
-   		});
+		function print(user, txt) {
+			let temp = '';
+			temp += '<div style="margin-bottom:3px;">';
+			temp += '[' + user + '] ';
+			temp += txt;
+			temp += ' <span style="font-size:11px;color:#777;">' + new Date().toLocaleTimeString() + '</span>';
+			temp += '</div>';
+			
+			$('#list').append(temp);
+		}
+		
+		
+		function print2(user) {
+			let temp = '';
+			temp += '<div style="margin-bottom:3px;">';
+			temp += "'" + user + "' 이(가) 접속했습니다." ;
+			temp += ' <span style="font-size:11px;color:#777;">' + new Date().toLocaleTimeString() + '</span>';
+			temp += '</div>';
+			
+			$('#list').append(temp);
+		}
+		
+		function print3(user) {
+			let temp = '';
+			temp += '<div style="margin-bottom:3px;">';
+			temp += "'" + user + "' 이(가) 종료했습니다." ;
+			temp += ' <span style="font-size:11px;color:#777;">' + new Date().toLocaleTimeString() + '</span>';
+			temp += '</div>';
+			
+			$('#list').append(temp);
+		}
+		
 
-   		$('#msg').keyup(function() {
-   			if (event.keyCode == 13) {
-   				
-   				// 서버에게 메세지 전달
-   				// 2#유저명#메시지
-   				ws.send('2#' + $('#user').val() + '#' + $(this).val());
-   			}
-   		});
-   		
-   		$('#btnDisConnect').click(function() {
-   			ws.send('3#' + $('#user').val() + '#');
-   			ws.close();
-   			
+		//print('길동', '안녕하세요.');
+		
+		
+		$('#user').keydown(function() {
+			if (event.keyCode == 13) {
+				$('#btnConnect').click();
+			}
+		});
+		
+		
+		
+		$('#msg').keydown(function() {
+			if (event.keyCode == 13) {
+				
+				//서버에게 메시지 전달
+				//2#유저명#메시지
+				ws.send('2#' + $('#user').val() + '#' + $(this).val()); //서버에게
+				print($('#user').val(), $(this).val()); //본인 대화창에
+				
+				$('#msg').val('');
+				$('#msg').focus();
+				
+			}
+		});
+		
+		$('#btnDisconnect').click(function() {
+			ws.send('3#' + $('#user').val() + '#');
+			ws.close();
+			
 			$('#user').attr('readonly', false);
 			$('#user').val('');
 			
-			$('#btnConnect').attr('disabled', true);
-			$('#btnDisconnect').attr('disabled', false);
+			$('#btnConnect').attr('disabled', false);
+			$('#btnDisconnect').attr('disabled', true);
 			
-			$('#msg').attr('disabled', false);
-			$('#msg').focus();
-   			
-   			
-   		});
+			$('#msg').val('');
+			$('#msg').attr('disabled', true);
+		});
    		
    		
 	</script>
