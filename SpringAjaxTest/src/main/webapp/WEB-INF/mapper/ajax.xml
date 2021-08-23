@@ -2,10 +2,12 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- 모든 마크업언어(ML)는 반드시 루트 엘리먼트가 유일하게 존재해야 한다. -->
+
 <mapper namespace="ajax">
 
 	<select id="getUserCount" resultType="Integer">
 		select count(*) from tblAjaxUser
 	</select>
-	
+
 </mapper>

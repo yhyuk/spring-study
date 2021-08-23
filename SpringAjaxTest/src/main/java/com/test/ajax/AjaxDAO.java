@@ -11,9 +11,8 @@ public class AjaxDAO {
 	private SqlSessionTemplate template;
 
 	public int getUserCount() {
+		
 		return template.selectOne("ajax.getUserCount");
 	}
-	
-	
 	
 }

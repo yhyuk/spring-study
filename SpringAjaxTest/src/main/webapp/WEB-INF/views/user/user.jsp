@@ -32,20 +32,20 @@
    			jQuery Ajax
    		-->
    		
-   		<div id="output" class="alert alert-success">
-   			<c:if test="${ empty count }">
-   			&nbsp;
-   			</c:if>
-   			<c:if test="${ not empty count }">
-   			유저 수: ${ count }명
-   			</c:if>
-   		</div>
-   		
-   		<button type="button" id="btn"  class="btn btn-default">유저 수 가져오기</button>
-   		<button type="button" class="btn btn-default"
-   			onclick="location.href='/ajax/user/user.action';">페이지 초기화</button>
-   		
-   		<hr />
+		<div id="output" class="alert alert-success">
+			<c:if test="${empty count}">
+			&nbsp;
+			</c:if>
+			<c:if test="${not empty count}">
+			유저수: ${count}명
+			</c:if>
+		</div>
+		
+		<button id="btn" type="button" class="btn btn-default">유저수 가져오기</button>
+		<button type="button" class="btn btn-default" 
+			onclick="location.href='/ajax/user/user.action';">페이지 초기화</button>
+			
+		<hr>
    		
    		<h2>다른 업무</h2>
    		
@@ -68,9 +68,9 @@
 			   > 현실: output 이외에 이전과 동일한 소스까지도 다시 가져온다!
 		*/
 		
-   		$('#btn').click(function() {
-   			location.href = '/ajax/user/user.action?btn=1';
-   		});
+		$('#btn').click(function() {
+			location.href = '/ajax/user/user.action?btn=1';
+		});
    	
    	
 	</script>

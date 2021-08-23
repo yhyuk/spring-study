@@ -23,14 +23,25 @@ public class AjaxController {
 			int count = dao.getUserCount();
 			req.setAttribute("count", count);
 		}
-		
+
 		return "user/user";
 	}
-
+	
+	
 	@RequestMapping(value = "/user/user2.action", method = { RequestMethod.GET })
 	public String user2(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
-		
+
 		return "user/user2";
+	}
+	
+	
+	@RequestMapping(value = "/user/count.action", method = { RequestMethod.GET })
+	public String count(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+
+		int count = dao.getUserCount();
+		req.setAttribute("count", count);
+		
+		return "user/count";
 	}
 
 }

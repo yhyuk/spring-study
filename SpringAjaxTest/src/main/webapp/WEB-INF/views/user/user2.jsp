@@ -18,51 +18,69 @@
 	<div class="container">
 		<h1 class="page-header">Ajax</h1>      
    		
-   		<!--  
-   		
-   			AJAX
-   			- Asynchronous JavaScript and XML
-   			- 비동기 자바스크립트 그리고 XML
-   			- 자바스크립트를 사용한 서버와 통신하는 기술(서버와 데이터를 주고 받는 기술)
-   			- 브라우저를 깜빡임(새로고침)없이 내용을 새로 고치는 기술이요.
-   			- 자바스크립트 기술
-   			
-   			순수 Ajax
-   			
-   			jQuery Ajax
-   		-->
-   		
-   		<div id="output" class="alert alert-success">
-   			<c:if test="${ empty count }">
-   			&nbsp;
-   			</c:if>
-   			<c:if test="${ not empty count }">
-   			유저 수: ${ count }명
-   			</c:if>
-   		</div>
-   		
-   		<button type="button" id="btn"  class="btn btn-default">유저 수 가져오기</button>
-   		<button type="button" class="btn btn-default">페이지 초기화</button>
-   		
-   		<hr />
-   		
-   		<h2>다른 업무</h2>
-   		
-   		<input type="text" class="form-control" />
+		<h1 class="page-header">Ajax</h1>		
+				
+		<div id="output" class="alert alert-success"></div>
+		
+		<button id="btn" type="button" class="btn btn-default">유저수 가져오기</button>
+		<button type="button" class="btn btn-default" onclick="$('#output').text('');">페이지 초기화</button>
+			
+		<hr>
+		
+		<h2>다른 업무</h2>
+		
+		<input type="text" class="form-control">
    		
    		   
    	</div>   
    	
    	<script>
    	
-   		$('#btn').click(function() {
-   			
-   			// XMLHttpRequest
-   			// - 자바스크립트 비동기 통신 객체
-   			// - 서버와 데이터를 주고 받는 역할
-   			let ajax = new XMLHttpRequest();
-   			
-   		});
+		$('#btn').click(function() {
+			
+			//XMLHttpRequest
+			// - 자바스크립트 비동기 통신 객체
+			// - 서버와 데이터를 주고 받는 역할
+			let ajax = new XMLHttpRequest();
+			
+			//console.log(XMLHttpRequest);
+			
+			//on
+			//readystate
+			//change
+			ajax.onreadystatechange = function() {
+				
+				//console.log('readystate', ajax.readyState);
+				if (ajax.readyState == 4) {
+					
+					//readyState == 4 > 서버에서 데이터를 클라이언트(ajax)에게 반환 완료
+					
+					//서버로부터 가져온 데이터
+					//1. ajax.responseText -> JSON
+					//2. ajax.responseXML
+					
+					//console.log(ajax.responseText);
+					$('#output').text('인원수: ' + ajax.responseText);
+					
+				}
+				
+			};		
+			// ------------------------> ajax 설정 완료
+			
+			
+			
+			//ajax 객체를 가지고 서버에게 GET 방식으로 페이지를 요청
+			// - <a href="/ajax/user/count.action">link</a>
+			// - <form method="GET" action="/ajax/user/count.action">
+			// - location.href = "/ajax/user/count.action";
+			
+			//연결 요청
+			ajax.open('GET', '/ajax/user/count.action');
+			
+			//데이터 전송(데이터 유무와 상관없이 반드시 실행) -> 연결 요청 완료
+			ajax.send();
+			
+		});	
    	
 	</script>
 </body>

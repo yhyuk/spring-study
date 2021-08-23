@@ -26,8 +26,7 @@
 	<bean id="sessionfactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="log4j"></property>
-		<property name="mapperLocations"
-			value="classpath*:/WEB-INF/mapper/*.xml"></property>
+		<property name="mapperLocations" value="/WEB-INF/mapper/*.xml"></property>
 		<property name="configLocation" value="/WEB-INF/mybatis.xml"></property>
 	</bean>
 
