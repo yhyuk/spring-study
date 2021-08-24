@@ -29,13 +29,13 @@
 <body>
 	<div class="img-header">
 
-		<h1>카테고리 명</h1>
+		<h1>디자인/개발</h1>
 
 	</div>
 
 	<tiles:insertAttribute name="header" />
 	<section class="main-section">
-
+		<tiles:insertAttribute name="content" />
 		<tiles:insertAttribute name="inner" />
     </section>
 

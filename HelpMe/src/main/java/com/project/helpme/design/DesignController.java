@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class DesignController {
 
-	@RequestMapping(value = "/design/test.action", method = { RequestMethod.GET })
+	@RequestMapping(value = "/design/list.action", method = { RequestMethod.GET })
 	public String test(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
 
-		return "test";
+		return "design.list";
 	}
 	
 }
