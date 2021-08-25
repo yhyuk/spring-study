@@ -17,7 +17,7 @@
    	<!-- user.jsp -->
 	<div class="container">
 		<h1 class="page-header">Ajax</h1>      
-   		
+	  		
 		<div id="output" class="alert alert-success"></div>
 		
 		<button id="btn" type="button" class="btn btn-default">유저수 가져오기</button>
@@ -28,9 +28,9 @@
 		<h2>다른 업무</h2>
 		
 		<input type="text" class="form-control">
-   		
-   		   
-   	</div>   
+	  		
+	  		   
+	</div>   
    	
    	<script>
    	
