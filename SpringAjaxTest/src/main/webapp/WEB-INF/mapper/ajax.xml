@@ -9,5 +9,44 @@
 	<select id="getUserCount" resultType="Integer">
 		select count(*) from tblAjaxUser
 	</select>
-
+	
+	
+	
+	
+	<!-- CRUD -->
+	<select id="list" resultType="com.test.ajax.UserDTO">
+		select * from tblAjaxUser order by name asc
+	</select>
+	
+	<insert id="add" parameterType="com.test.ajax.UserDTO">
+		insert into tblAjaxUser (seq, name, age, address, birthday) 
+		values (seqAjaxUser.nextVal, #{name}, #{age}, #{address}, #{birthday})
+	</insert>
+	
+	<select id="get" resultType="com.test.ajax.UserDTO" parameterType="String">
+		select * from tblAjaxUser where seq = #{ seq }
+	</select>
+	
+	<update id="edit" parameterType="com.test.ajax.UserDTO">
+		update tblAjaxUser set
+			name = #{ name },
+			age = #{ age },
+			adddress = #{ address },
+			birthday = #{ birthday }
+		where seq = #{ seq } 
+	</update>
+	
+	<delete id="del" parameterType="String">
+		delete from tblAjaxUser where seq = #{ seq }
+	</delete>
+	
+	<select id="search" resultType="com.test.ajax.UserDTO" parameterType="String">
+		select * from tblAjaxUser where address like '%' || #{ word } || '%'
+			order by name asc
+	</select>
+	
+	<select id="getSeq" resultType="String">
+		select max(seq) from tblAjaxUser
+	</select>
+	
 </mapper>
