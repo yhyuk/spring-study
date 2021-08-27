@@ -13,8 +13,21 @@ public class AjaxDAO {
 	private SqlSessionTemplate template;
 
 	public int getUserCount() {
-		
 		return template.selectOne("ajax.getUserCount");
+	}
+	
+	public String getSeq() {
+		return template.selectOne("ajax.getSeq");
+	}
+
+
+	public String getUserName() {
+		return template.selectOne("ajax.getUserName");
+	}
+
+
+	public UserDTO getUser() {
+		return template.selectOne("ajax.getUser");
 	}
 	
 	
@@ -47,10 +60,6 @@ public class AjaxDAO {
 	// 6. 유저 검색하기(주소)
 	public List<UserDTO> search(String word) {
 		return template.selectList("ajax.search", word);
-	}
-	
-	public String getSeq() {
-		return template.selectOne("ajax.getSeq");
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.test.ajax;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,20 +43,121 @@ public class AjaxController {
 	
 	// 버튼 누른 후
 	@RequestMapping(value = "/user/count.action", method = { RequestMethod.GET })
-	public String count(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
-
+	public String count(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+						, String name, String age) {
+		
+		// 서버 작업 수행 중 에러 발생
+		// Random rnd = new Random();
+		// System.out.println(100 / rnd.nextInt(3));
+		
+		/*
+		try {
+			Thread.sleep(10000); // 하던 일을 잠시 멈춰라
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		*/
+		
 		int count = dao.getUserCount();
 		req.setAttribute("count", count);
 		
 		return "user/count";
 	}
 	
+	
+	// 순수 Ajax
+	@RequestMapping(value = "/user/user3.action", method = { RequestMethod.GET })
+	public String user3(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+
+		return "user/user3";
+	}
+	
+	// jQuery Ajax
+	@RequestMapping(value = "/user/user4.action", method = { RequestMethod.GET })
+	public String user4(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+
+		return "user/user4";
+	}	
+	
+	//
+	@RequestMapping(value = "/basic/basic.action", method = { RequestMethod.GET })
+	public String basic(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+
+		return "basic/basic";
+	}	
+	
+	// 서버의 요청 메소드(*.action)
+	// *** 앞으로는 서버측에 요청 메소드(*.action)를 만들때는 용도가 브라우저 호출용인지, ajax 호출용인지 미리 구분하고 구현한다.
+	// 1. 브라우저가 요청 > 웹 페이지(소스)를 반환 (JSP 사용)
+	// 2. ajax가 요청 > 데이터를 반환 (Java 사용 + 데이터 출력(반환))
+	@RequestMapping(value = "/basic/m1.action", method = { RequestMethod.GET })
+	public void m1(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+		
+		try {
+			
+			// 브라우저에게 네가 돌려받는 데이터는 순수한 텍스트이다.(통보)
+			// 원래는 text/html로 인식한다.
+			resp.setContentType("text/plain");
+			resp.setCharacterEncoding("UTF-8");
+			
+			// int count = dao.getUserCount();
+			// PrintWriter writer = resp.getWriter();
+			// writer.print(count);
+
+			String name = dao.getUserName();
+
+			PrintWriter writer = resp.getWriter();
+			writer.print(name);
+			writer.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	/*
+	@RequestMapping(value = "/basic/m2.action", method = { RequestMethod.GET })
+	public void m2(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+		
+		try {
+			
+			resp.setContentType("application/json");
+			resp.setCharacterEncoding("UTF-8");
+			
+			UserDTO dto = dao.getUser();
+			
+			PrintWriter writer = resp.getWriter();
+			
+			// java -> javascript : json 형식으로 만들기
+			writer.printf("{");
+			writer.printf("\"seq\": \"%s\",", dto.getSeq());
+			writer.printf("\"name\": \"%s\",", dto.getName());
+			writer.printf("\"age\": \"%s\",", dto.getAge());
+			writer.printf("\"address\": \"%s\",", dto.getAddress());
+			writer.printf("\"birthday\": \"%s\"", dto.getBirthday());
+			writer.printf("}");
+			
+			writer.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}		
+	*/
+	
+	@RequestMapping(value = "/basic/m2.action", method = { RequestMethod.GET })
+	@ResponseBody // UserDTO -> json 변환
+	public UserDTO m2(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+		UserDTO dto = dao.getUser();
+		return dto; 
+	}		
+
+	
 	// GET http://localhost:8090/ajax/crud/list.action
 	// 1. 유저 목록 보기
 	@RequestMapping(value = "/crud/list.action", method = { RequestMethod.GET })
 	@ResponseBody
 	public List<UserDTO> list(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
-		
 		return dao.list();
 	}
 	
@@ -73,7 +176,6 @@ public class AjaxController {
 	@ResponseBody
 	public UserDTO get(HttpServletRequest req, HttpServletResponse resp, HttpSession session
 					, String seq) {
-		
 		return dao.get(seq);
 	}
 
@@ -91,7 +193,6 @@ public class AjaxController {
 	@ResponseBody
 	public int del(HttpServletRequest req, HttpServletResponse resp, HttpSession session
 					, String seq) {
-		
 		return dao.del(seq);
 	}
 	
@@ -100,21 +201,18 @@ public class AjaxController {
 	@ResponseBody
 	public List<UserDTO> search(HttpServletRequest req, HttpServletResponse resp, HttpSession session
 								, String word) {
-		
 		return dao.search(word);
 	}
 	
 	// 7. 페이지
 	@RequestMapping(value = "/crud/index.action", method = { RequestMethod.GET })
 	public String index(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
-
 		return "crud/index";
 	}
 	
 	@RequestMapping(value = "/crud/getseq.action", method = { RequestMethod.GET })
 	@ResponseBody
 	public String getSeq(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
-		
 		return dao.getSeq();
 	}
 }

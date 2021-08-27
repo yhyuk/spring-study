@@ -39,4 +39,3 @@ delete from tblAjaxUser where seq = 1;
 
 -- 6. 유저 검색하기(주소)
 select * from tblAjaxUser where address like '%검색어%';
-

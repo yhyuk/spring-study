@@ -10,7 +10,13 @@
 		select count(*) from tblAjaxUser
 	</select>
 	
+	<select id="getUserName" resultType="String">
+		select name from tblAjaxUser where seq = 1
+	</select>
 	
+	<select id="getUser" resultType="com.test.ajax.UserDTO">
+		select * from tblAjaxUser where seq = 1
+	</select>
 	
 	
 	<!-- CRUD -->

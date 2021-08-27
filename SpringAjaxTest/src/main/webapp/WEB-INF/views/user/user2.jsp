@@ -14,7 +14,7 @@
 
 </head>
 <body>
-   	<!-- user.jsp -->
+   	<!-- user2.jsp -->
 	<div class="container">
 		<h1 class="page-header">Ajax</h1>      
 	  		
