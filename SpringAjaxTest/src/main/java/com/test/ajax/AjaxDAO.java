@@ -20,11 +20,9 @@ public class AjaxDAO {
 		return template.selectOne("ajax.getSeq");
 	}
 
-
 	public String getUserName() {
 		return template.selectOne("ajax.getUserName");
 	}
-
 
 	public UserDTO getUser() {
 		return template.selectOne("ajax.getUser");
@@ -34,6 +32,19 @@ public class AjaxDAO {
 		return template.selectList("ajax.getList");
 	}
 	
+	public void removeUser(String seq) {
+		template.delete("ajax.removeUser", seq);
+	}
+	
+	public UserDTO getSeqUser(String seq) {
+		return template.selectOne("ajax.getSeqUser", seq);
+	}
+	
+	public int add(UserDTO dto) {
+		return template.insert("ajax.add", dto);
+	}
+	
+	
 	// CRUD
 	// 1. 유저 목록보기
 	public List<UserDTO> list() {
@@ -41,9 +52,11 @@ public class AjaxDAO {
 	}
 	
 	// 2. 유저 등록하기
+	/*
 	public int add(UserDTO dto) {
 		return template.insert("ajax.add", dto);
 	}
+	*/
 	
 	// 3. 특정 유저 가져오기
 	public UserDTO get(String seq) {

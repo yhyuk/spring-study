@@ -197,6 +197,31 @@ public class AjaxController {
 	
 	}		
 	
+	@RequestMapping(value = "/basic/m4.action", method = { RequestMethod.GET })
+	public void m4(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+					, String seq) {
+	
+		dao.removeUser(seq);
+	}
+	
+	@RequestMapping(value = "/basic/m5.action", method = { RequestMethod.GET })
+	@ResponseBody 
+	public UserDTO m5(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+						, String seq) {
+		UserDTO dto = dao.getSeqUser(seq);
+		return dto; 
+	}			
+	
+	@RequestMapping(value = "/basic/m6.action", method = { RequestMethod.POST })
+	@ResponseBody 
+	public int m6(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+						, UserDTO dto) {
+		
+		int result = dao.add(dto);
+		
+		return result; 
+	}		
+	
 	
 	
 	

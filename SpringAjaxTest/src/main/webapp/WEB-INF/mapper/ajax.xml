@@ -19,8 +19,25 @@
 	</select>
 	
 	<select id="getList" resultType="com.test.ajax.UserDTO">
-		select * from tblAjaxUser order seq asc
+		select * from tblAjaxUser order by seq asc
 	</select>
+	
+	<!-- 해당 seq 유저 삭제 -->
+	<delete id="removeUser" parameterType="String">
+		delete from tblAjaxUser where seq = #{ seq }
+	</delete>
+	
+	<!-- 해당 seq 유저 가져오기 -->
+	<select id="getSeqUser" parameterType="String" resultType="com.test.ajax.UserDTO">
+		select * from tblAjaxUser where seq = #{ seq }
+	</select>
+	
+	<insert id="add" parameterType="com.test.ajax.UserDTO">
+		insert into tblAjaxUser (seq, name, age, address, birthday) 
+				values (seqAjaxUser.nextVal, #{name}, #{age}, #{address}, #{birthday})
+	</insert>
+	
+	
 	
 	
 	<!-- CRUD -->
@@ -28,10 +45,12 @@
 		select * from tblAjaxUser order by name asc
 	</select>
 	
+	<!--  
 	<insert id="add" parameterType="com.test.ajax.UserDTO">
 		insert into tblAjaxUser (seq, name, age, address, birthday) 
 		values (seqAjaxUser.nextVal, #{name}, #{age}, #{address}, #{birthday})
 	</insert>
+	-->
 	
 	<select id="get" resultType="com.test.ajax.UserDTO" parameterType="String">
 		select * from tblAjaxUser where seq = #{ seq }
