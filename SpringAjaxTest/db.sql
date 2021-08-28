@@ -23,7 +23,6 @@ select * from tblAjaxUser;
 insert into tblAjaxUser (seq, name, age, address, birthday) values (3, '테스트', 20, '인천시 동구', '1997-10');
 
 select * from tblUser;
-
 -- DML
 -- 업무에 필요한 SQL를 작성
 -- 1. 유저 목록 보기

@@ -216,14 +216,22 @@ public class AjaxController {
 	@ResponseBody 
 	public int m6(HttpServletRequest req, HttpServletResponse resp, HttpSession session
 						, UserDTO dto) {
-		
 		int result = dao.add(dto);
-		
 		return result; 
 	}		
 	
+	@RequestMapping(value = "/login/ex01.action", method = { RequestMethod.GET })
+	public String ex01(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+		return "login/ex01";
+	}
 	
-	
+	@RequestMapping(value = "/login/idcheck.action", method = { RequestMethod.GET })
+	@ResponseBody 
+	public int idcheck(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+						, String id) {
+		int result = dao.idcheck(id);
+		return result; 
+	}		
 	
 	
 	

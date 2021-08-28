@@ -44,6 +44,9 @@ public class AjaxDAO {
 		return template.insert("ajax.add", dto);
 	}
 	
+	public int idcheck(String id) {
+		return template.selectOne("ajax.idcheck", id);
+	}
 	
 	// CRUD
 	// 1. 유저 목록보기
