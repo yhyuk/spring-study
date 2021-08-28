@@ -30,8 +30,9 @@
 		<div id="m2" class="alert alert-info"></div>
 		<div><input type="button" id="btn2" class="btn btn-default" value="클릭" /></div>
 		 
-
 		<h2>데이터 가져오기(복합값 - 다중 객체)</h2>
+		<div id="m3" class="alert alert-success"></div>
+		<div><input type="button" id="btn3" class="btn btn-default" value="클릭" /></div>
 		
 		<h2>데이터 보내기(원자값)</h2>      
 		
@@ -90,7 +91,25 @@
 					$('#m2').text(obj.seq + ', ' + obj.name + ', ' + obj.address);
 				},
 				error: function(a, b, c) {
-					console.log(a, b, c)
+					console.log(a, b, c);
+				}
+				
+			});
+			
+		});
+		
+		$('#btn3').click(function () {
+			
+			$.ajax({
+				
+				type: 'GET',
+				url: '/ajax/basic/m3.action',
+				dataType: 'json',
+				success: function(???) {
+					
+				},
+				error: function(a, b, c) {
+					console.log(a, b, c);
 				}
 				
 			});

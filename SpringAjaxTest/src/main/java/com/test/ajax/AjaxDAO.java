@@ -30,6 +30,9 @@ public class AjaxDAO {
 		return template.selectOne("ajax.getUser");
 	}
 	
+	public List<UserDTO> getList() {
+		return template.selectList("ajax.getList");
+	}
 	
 	// CRUD
 	// 1. 유저 목록보기
@@ -61,5 +64,5 @@ public class AjaxDAO {
 	public List<UserDTO> search(String word) {
 		return template.selectList("ajax.search", word);
 	}
-	
+
 }

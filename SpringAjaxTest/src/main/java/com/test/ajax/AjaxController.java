@@ -152,6 +152,55 @@ public class AjaxController {
 		return dto; 
 	}		
 
+	@RequestMapping(value = "/basic/m3.action", method = { RequestMethod.GET })
+	@ResponseBody
+	public List<UserDTO> m3(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+	
+		// ajax 요청 -> tblAjaxUser 전체 목록 반환
+	
+		/*
+		 *	목적: json 형식을 가지는 문자열을 만들어서 반환!!!
+		 *
+		 *  UserDTO 1개
+		 *  	=>
+		 *  json 객체 1개
+		 *  {
+		 *  	"seq": 1,
+		 *  	"name": "홍길동",
+		 *  	"age": 20
+		 *  }
+		 *  
+		 *  그런데 문제는... UserDTO가 여러개가 필요하다?
+		 *  	=>
+		 *  List<UserDTO> -> json??
+		 *  [ 
+		 *  	{
+		 *  		"seq": 1,
+		 *  		"name": "홍길동",
+		 *  		"age": 20
+		 *  	},
+		 *  	{
+		 *  		"seq": 2,
+		 *  		"name": "아무개",
+		 *  		"age": 20
+		 *  	},
+		 *  	{
+		 *  		"seq": 3,
+		 *  		"name": "호호호",
+		 *  		"age": 20
+		 *  	}
+		 *  ]
+		 * 
+		 */
+		
+		return dao.getList();
+	
+	}		
+	
+	
+	
+	
+	
 	
 	// GET http://localhost:8090/ajax/crud/list.action
 	// 1. 유저 목록 보기

@@ -18,6 +18,10 @@
 		select * from tblAjaxUser where seq = 1
 	</select>
 	
+	<select id="getList" resultType="com.test.ajax.UserDTO">
+		select * from tblAjaxUser order seq asc
+	</select>
+	
 	
 	<!-- CRUD -->
 	<select id="list" resultType="com.test.ajax.UserDTO">

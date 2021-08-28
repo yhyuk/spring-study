@@ -33,10 +33,6 @@
    	
    		$('#btn').click(function() {
    			
-   			// jQuery는 항상 방식이 $(선택자).함수(); 이런식으로 작성한다.
-   			// $(document).ready();
-   			// $('#btn').click();
-   			
    			// jQuery 독립 함수
    			$.ajax({
    				type: 'GET',
@@ -47,7 +43,6 @@
    			});
    			
    		});
-   	
    	
 	</script>
 </body>
