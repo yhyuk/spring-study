@@ -12,9 +12,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class DesignController {
 
 	@RequestMapping(value = "/design/list.action", method = { RequestMethod.GET })
-	public String test(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
-
+	public String list(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
 		return "design.list";
+	}
+	
+	@RequestMapping(value = "/design/reqform.action", method = { RequestMethod.GET })
+	public String reqform(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+						, String service) {
+		req.setAttribute("service", service);
+		return "design.reqform";
+	}
+	@RequestMapping(value = "/design/appform.action", method = { RequestMethod.GET })
+	public String appform(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+			, String service) {
+		req.setAttribute("service", service);
+		return "design.appform";
 	}
 	
 }

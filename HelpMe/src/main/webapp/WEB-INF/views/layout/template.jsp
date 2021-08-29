@@ -15,8 +15,13 @@
 <style>
 
    .img-header {
-      background-image: url( "/helpme/resources/images/about.jpg" );
-      margin-top: 100px; object-fit: cover; width: 100vw; height: 370px; overflow: hidden;
+      background-image: url( "/helpme/resources/images/design/about.png" );
+      background-size: cover;
+      margin-top: 100px; 
+      object-fit: cover; 
+      width: 100vw; 
+      height: 370px; 
+      overflow: hidden;
    }
 
    .img-header h1{

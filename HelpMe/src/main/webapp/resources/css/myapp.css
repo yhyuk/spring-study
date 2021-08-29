@@ -91,8 +91,8 @@ h3 {
 }
 
 .main-section {
-	width: 800px;
-	margin: 35px auto;
+	width: 1200px;
+	margin: 25px auto;
 	position: relative;
 	left: 0;
 	top: 0;
@@ -132,7 +132,7 @@ h3 {
 }
 
 .main-footer > section {
-	width: 800px;
+	width: 1200px;
 	height: 45px;
 	margin: 0px auto;
 	margin-top: 20px;
