@@ -16,9 +16,9 @@ public class DesignDAO {
 		return template.insert("design.reqAdd", dto);
 	}
 
-//	public List<DesignDTO> myList(String id) {
-//		return template.selectList("design.myList", id);
-//	}
+	public List<DesignDTO> myList(String id) {
+		return template.selectList("design.myList", id);
+	}
 
 	
 	

@@ -9,8 +9,8 @@
     		values (designSeq.nextVal, #{id}, #{category}, #{title}, #{ask}, #{plan}, #{refer}, default, #{startDay}, #{endDay}, #{address}, #{ability}, default, default)
 	</insert>
 	
-	<!-- <select id="myList" parameterType="String" resultType="reqdto">
-		select * from tblDesign where id = #{ id } order by designSeq desc;
-	</select> -->
+	<select id="myList" parameterType="String" resultType="reqdto">
+		select * from tblDesign where id = #{ id } order by designSeq desc
+	</select>
 
 </mapper>

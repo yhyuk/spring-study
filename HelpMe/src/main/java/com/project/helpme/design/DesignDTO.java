@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class DesignDTO {
 	
-	private String seq;
+	private String designSeq;
 	private String id;
 	private String category;
 	private String title; 

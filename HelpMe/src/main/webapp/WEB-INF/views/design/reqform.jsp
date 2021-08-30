@@ -3,6 +3,7 @@
 
 <!-- 일반 사용자 > 요청서 작성 -->
 <style>
+
 	table {
 		margin-left:auto; 
     	margin-right:auto;
@@ -64,10 +65,14 @@
 		<tr>
 			<th>희망 숙련도</th>
 			<td style="text-align: left;">
-				<input type="checkbox" name="ability" value="고급" style="position: relative; top: 1.5px; margin-right: 5px;"/>고급
-				<input type="checkbox" name="ability" value="중급" style="position: relative; top: 1.5px; margin-right: 5px;"/>중급
-				<input type="checkbox" name="ability" value="초급" style="position: relative; top: 1.5px; margin-right: 5px;"/>초급
-				<input type="checkbox" name="ability" value="상관없음" style="position: relative; top: 1.5px; margin-right: 5px;"/>상관없음
+				<input type="checkbox" name="ability" value="high" style="position: relative; top: 1.5px; margin-right: 5px;"
+					onclick='checkOnlyOne(this)'/>고급
+				<input type="checkbox"name="ability" value="middle" style="position: relative; top: 1.5px; margin-right: 5px;"
+					onclick='checkOnlyOne(this)'/>중급
+				<input type="checkbox" name="ability" value="begin" style="position: relative; top: 1.5px; margin-right: 5px;"
+					onclick='checkOnlyOne(this)'/>초급
+				<input type="checkbox" name="ability" value="not" style="position: relative; top: 1.5px; margin-right: 5px;"
+					onclick='checkOnlyOne(this)'/>상관없음
 			</td>
 		</tr>
 	
@@ -82,3 +87,19 @@
 	</div>
 
 </form>
+
+<script>
+
+	function checkOnlyOne(element) {
+	  
+		const checkboxes = document.getElementsByName("ability");
+	  
+	  	checkboxes.forEach((cb) => {
+	    	cb.checked = false;
+	  	})
+	  
+	  	element.checked = true;
+	}
+	
+
+</script>

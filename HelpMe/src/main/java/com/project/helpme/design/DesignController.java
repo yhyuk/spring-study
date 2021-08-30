@@ -1,5 +1,7 @@
 package com.project.helpme.design;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,28 +24,40 @@ public class DesignController {
 		return "design.list";
 	}
 	
-//	@RequestMapping(value = "/design/mylist.action", method = { RequestMethod.GET })
-//	public String mylist(HttpServletRequest req, HttpServletResponse resp, HttpSession session
-//						, String id) {
-//		
-//		List<DesignDTO> list = dao.myList(id);
-//		
-//		req.setAttribute("list", list);
-//		return "design.mylist";
-//	}
+	@RequestMapping(value = "/design/mylist.action", method = { RequestMethod.GET })
+	public String mylist(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+						, String id) {
+		
+		List<DesignDTO> list = dao.myList(id);
+		
+		req.setAttribute("list", list);
+		return "design.mylist";
+	}
 	
 	@RequestMapping(value = "/design/reqform.action", method = { RequestMethod.GET })
 	public String reqform(HttpServletRequest req, HttpServletResponse resp, HttpSession session
 						, String service) {
+		
 		req.setAttribute("service", service);
 		return "design.reqform";
 	}
 
 	@RequestMapping(value = "/design/reqformok.action", method = { RequestMethod.POST })
-	public int reqformok(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+	public void reqformok(HttpServletRequest req, HttpServletResponse resp, HttpSession session
 			, DesignDTO dto) {
 		
-		return dao.reqAdd(dto);
+		int result = dao.reqAdd(dto);
+		System.out.println(dto);
+		
+		if ( result == 1 ) {
+			try {
+				resp.sendRedirect("/helpme/design/list.action");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+		}
+		
 	}
 	
 	

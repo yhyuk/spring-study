@@ -648,7 +648,7 @@ body.dark .logo img {
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 							<div style="float: right;">
-								<a class="nav-link" href="#">로그인</a>
+								<a class="nav-link" href="/helpme/member/login.action">로그인</a>
 								<a class="nav-link" href="#">회원가입</a>
 							</div>
 
