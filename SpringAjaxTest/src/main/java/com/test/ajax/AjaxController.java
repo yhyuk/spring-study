@@ -304,8 +304,32 @@ public class AjaxController {
 	
 	@RequestMapping(value = "/memo/index.action", method = { RequestMethod.GET })
 	public String memoindex(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
-
+		
+		// 페이지 초기화 작업
+		int no = dao.getMaxNo(); 		 // 마지막 id 찾기
+		int back = dao.getMaxBack(); 	 // 마지막 이미지 찾기
+		int zindex = dao.getMaxZIndex(); // 마지막 z-index찾기
+		
+		// 기존 메모 가져오기
+		List<MemoDTO> list = dao.listMemo();
+		
+		req.setAttribute("no", no);
+		req.setAttribute("back", back);
+		req.setAttribute("zindex", zindex);
+		
+		req.setAttribute("list", list);
+		
 		return "memo/index";
+	}
+
+	@RequestMapping(value = "/memo/add.action", method = { RequestMethod.POST })
+	@ResponseBody
+	public int add(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+					, MemoDTO dto) {
+		
+		int result = dao.addMemo(dto);
+		
+		return result;
 	}
 	
 	

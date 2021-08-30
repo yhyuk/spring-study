@@ -41,32 +41,126 @@
 		outline: none;
 		background-color: transparent;
 	}
+	
+	.memo .txtMemo::-webkit-scrollbar {
+    	width: 10px;
+  	}
+  	.memo .txtMemo::-webkit-scrollbar-thumb {
+    	background-color: #FFF;
+    	border-radius: 10px;
+	    background-clip: padding-box;
+	    border: 2px solid transparent;
+ 	 }
+  	..memo .txtMemo::-webkit-scrollbar-track {
+    	background-color: grey;
+    	border-radius: 10px;
+    	box-shadow: inset 0px 0px 5px white;
+  	}
+	
    
 </style>
 
 </head>
 <body>
    	<!-- memo.jsp -->
-	<h1 class="page-header">Memo</h1>      
+	<h1 class="page-header">Memo <button type="button" id="addMemo" class="btn btn-default"><span class="glyphicon glyphicon-plus"> memo</span></button></h1>      
 	 		
-	<div class="memo" id="m1" style="background-image: url(/ajax/resources/images/01.png)">
-		<div class="btnClose">&times;</div>
-	</div>
-	<div class="memo" id="m2" style="background-image: url(/ajax/resources/images/02.png)">
-		<div class="btnClose">&times;</div>
-	</div>
+	<!-- 	
 	<div class="memo" id="m3" style="background-image: url(/ajax/resources/images/03.png)">
 		<div class="btnClose">&times;</div>
 		<textarea class="txtMemo" ></textarea>
 	</div>
-   		
+ 	-->   		
    		   
    	<script>
+   	
+   		// 아래의 2개의 이벤트를 실행할 시점에는 .memo 라는 태그가 화면에 존재하지 않음
+   		/*
+   		// 첫번째 이벤트
    		$('.memo').draggable().css('position', 'absolute');
    		
+   		// 두번째 이벤트
    		$('.memo .btnClose').click(function() {
    			$(this).parent().remove();
    		});
+   		*/
+   		
+   		
+   		let no = ${no + 1}; 	// id값
+   		let back = ${back + 1}; 	// 이미지 파일명
+   		let zindex = ${zindex + 1};	// 클릭한 postit 가장 앞으로
+   		
+   		// 1. 버튼 클릭시 새 메모 추가하기
+   		$('#addMemo').click(function() {
+   			
+   			if (back > 6) back = 1;
+   			
+   			// post-it 위치를 화면 내에 무작위로 배치하기
+   			let left = Math.random() * $(document).width() - 250;
+   			if (left < 100) left = 100;
+   			
+   			let top = Math.random() * $(document).height() - 250;
+   			if ( top < 100) top = 100;
+   			// 화면에 메모지 1개 추가하기
+   			$('body').append('<div class="memo" id="m' + no + '" style="background-image: url(/ajax/resources/images/0' + back + '.png);" data-back="0' + back + '"><div class="btnClose">&times;</div><textarea class="txtMemo" ></textarea></div>')
+   				.children()
+   				.last()
+   				.draggable()
+   				.css('position', 'absolute')  // 메모객체
+   				.css('left', left + 'px')
+   				.css('top', top + 'px')
+   				.mousedown(function() { // 메모객체
+   					$(this).css('z-index', zindex);
+   					zindex++;
+   				})
+   				.find('.btnClose').click(function() { // 메모객체의 닫기버튼
+   		   			$(this).parent().remove();
+   		   		});
+   			
+   			
+   			// 2. 새로 추가된 메모의 정보를 DB에 전송 + Ajax 사용
+   			$.ajax({
+   				type: 'POST',
+   				url: '/ajax/memo/add.action',
+   				data: 'id=m' + no + '&background=0' + back + '&left=' + left + '&top=' + top + '&zindex=0',
+   				dataType: 'json',
+   				success: function(result) {
+   					// 메모 추가 성공 유무 확인용
+   					if (result == 1) {
+   						
+   					} else {
+   						
+   					}
+   				},
+   				error: function(a, b, c) {
+   					console.log(a, b, c);
+   				}
+   			});
+   			
+   			
+   			no++;
+   			back++;
+   			
+   		});
+   		
+   		
+		<c:forEach items="${list}" var="dto">
+			$('body').append('<div class="memo" id="${ dto.id }' + no + '" style="background-image: url(/ajax/resources/images/${ dto.background }.png); z-index:${ dto.zindex };" data-back="${ dto.background }"><div class="btnClose">&times;</div><textarea class="txtMemo" ></textarea></div>')
+			.children()
+			.last()
+			.draggable()
+			.css('position', 'absolute')  // 메모객체
+			.css('left', '${ dto.left }px')
+			.css('top', '${ dto.top }px')
+			.mousedown(function() { // 메모객체
+				$(this).css('z-index', zindex);
+				zindex++;
+			})
+			.find('.btnClose').click(function() { // 메모객체의 닫기버튼
+			 			$(this).parent().remove();
+	 		});
+   		</c:forEach>
+   		
 	</script>
 </body>
 </html>

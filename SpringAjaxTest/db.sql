@@ -49,14 +49,22 @@ select * from tblAjaxUser where address like '%검색어%';
 
 
 ----------------------------------- AjaxMemo
-create table tblAjaxMemo (
+drop table tblAjaxMemo;
 
+create table tblAjaxMemo (
     seq number primary key,                 -- 번호
-    memo varchar2(1000) not null,           -- 메모
+    id varchar2(10) not null,               -- 아이디
+    memo varchar2(1000) null,           -- 메모
     regdate date default sysdate not null,  -- 작성시간
     left number default 0 not null,         -- 좌표(x)   
     top number default 0 not null,          -- 좌표(y)
-    background varchar2(2) not null         -- 배경
-
+    background varchar2(2) not null,        -- 배경
+    zindex number default 0 not null        -- z-index
 );
 create sequence seqAjaxMemo;
+
+select * from tblAjaxMemo;
+
+delete from tblAjaxMemo;
+commit;
+select nvl(substr(max(id), 2), 0) from tblAjaxMemo

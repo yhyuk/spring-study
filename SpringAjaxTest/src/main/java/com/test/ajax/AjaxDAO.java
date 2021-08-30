@@ -81,4 +81,24 @@ public class AjaxDAO {
 		return template.selectList("ajax.search", word);
 	}
 
+	public int addMemo(MemoDTO dto) {
+		return template.insert("ajax.addMemo", dto);
+	}
+
+	public int getMaxNo() {
+		return template.selectOne("ajax.getMaxNo");
+	}
+	
+	public int getMaxBack() {
+		return template.selectOne("ajax.getMaxBack");
+	}
+	
+	public int getMaxZIndex() {
+		return template.selectOne("ajax.getMaxZIndex");
+	}
+
+	public List<MemoDTO> listMemo() {
+		return template.selectList("ajax.listMemo");
+	}
+
 }
