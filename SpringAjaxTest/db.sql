@@ -42,3 +42,21 @@ delete from tblAjaxUser where seq = 1;
 
 -- 6. 유저 검색하기(주소)
 select * from tblAjaxUser where address like '%검색어%';
+
+
+
+
+
+
+----------------------------------- AjaxMemo
+create table tblAjaxMemo (
+
+    seq number primary key,                 -- 번호
+    memo varchar2(1000) not null,           -- 메모
+    regdate date default sysdate not null,  -- 작성시간
+    left number default 0 not null,         -- 좌표(x)   
+    top number default 0 not null,          -- 좌표(y)
+    background varchar2(2) not null         -- 배경
+
+);
+create sequence seqAjaxMemo;

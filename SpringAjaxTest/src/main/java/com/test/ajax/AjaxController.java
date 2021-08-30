@@ -233,7 +233,8 @@ public class AjaxController {
 		return result; 
 	}		
 	
-	
+	// --------------------------------------------------------------------------
+	// AjaxCRUD
 	
 	// GET http://localhost:8090/ajax/crud/list.action
 	// 1. 유저 목록 보기
@@ -297,4 +298,21 @@ public class AjaxController {
 	public String getSeq(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
 		return dao.getSeq();
 	}
+	
+	// --------------------------------------------------------------------------
+	// AjaxMemo
+	
+	@RequestMapping(value = "/memo/index.action", method = { RequestMethod.GET })
+	public String memoindex(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+
+		return "memo/index";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -27,3 +27,9 @@
 	- 기본 입출력 방법
 	- 아이디 중복 검사
 		a. 팝업창
+		
+	-------------------------------------------------------
+	jQuery UI (JavaScript API) + Ajax
+	
+	- com.test.ajax > MemoDTO.java
+	- views > memo > index.jsp

@@ -24,12 +24,14 @@
 
 </style>
 
-<form method="POST" action="">
+
+<h1>요청서 작성</h1>
+<form method="POST" action="/helpme/design/reqformok.action">
 
 	<table>
 		<tr>
 			<th>서비스</th>
-			<td><input type="text" name="service" class="form-control" value="${ service }" disabled style="width: 200px;"/></td>
+			<td><input type="text" name="category" class="form-control" value="${ service }" disabled style="width: 200px;"/></td>
 		</tr>
 		<tr>
 			<th>제목</th>
@@ -70,6 +72,8 @@
 		</tr>
 	
 	</table>
+	
+	<input type="hidden" name="id" value="testid"/>
 	
 	<div style="text-align: center; margin-top: 30px; margin-bottom: 100px;">
 		<input type="submit" value="작성하기" class="btn btn-success" />

@@ -51,7 +51,7 @@
 
 	<div class="my">
 		<input type="button" value="내가 쓴 글 보기" class="btn btn-primary" 
-			onclick="location.href='/helpme/design/mylist.action';"/>
+			onclick="location.href='/helpme/design/mylist.action?id=testid';"/>
 		<input type="button" value="요청 목록 보기" class="btn btn-primary"
 			onclick="location.href='/helpme/design/reqlist.action';"/>
 	</div>
