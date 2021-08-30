@@ -46,13 +46,16 @@
 </style>
 
 
+<!-- 일반 사용자 -->
+<c:if test="${ member.state eq '1' }">
+
 <div class="head">서비스</div>
 <div class="service">
 
 	<div class="my">
-		<input type="button" value="내가 쓴 글 보기" class="btn btn-primary" 
-			onclick="location.href='/helpme/design/mylist.action?id=testid';"/>
-		<input type="button" value="요청 목록 보기" class="btn btn-primary"
+		<input type="button" value="나의 요청 리스트" class="btn btn-primary" 
+			onclick="location.href='/helpme/design/mylist.action?id=${ id }';"/>
+		<input type="button" value="헬퍼 신청 리스트" class="btn btn-primary"
 			onclick="location.href='/helpme/design/reqlist.action';"/>
 	</div>
 	
@@ -99,3 +102,9 @@
 	</table>
 	
 </div>
+
+</c:if>
+
+<!-- 헬퍼 사용자 -->
+<c:if test="${ member.state eq '2' }">
+</c:if>

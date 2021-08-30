@@ -5,26 +5,35 @@
    		text-align: center;
    		margin-top: 200px;
    	}
-   	
-   	.user {
-   		display: inline-block;
-   		margin-right: 50px;
-   		margin-top: 50px;
-   	}
-   	.helper {
-   		display: inline-block;
-   	}
-   	
- 	.user img, .helper img{
- 		border-radius: 40%;
- 		cursor: pointer;
- 		width: 200px;
- 		height: 200px;
-	}	
+ 	#login {
+		margin-top: 50px;
+		margin-left: 350px;
+	}
 	
-	.info {
-		
-		font-size: 1.4em;
+	#login input[type=text], 
+	#login input[type=password] {
+		display:inline-block; 
+		width: 200px;
+		margin-bottom: 20px;
+	}
+	
+	#id, #pw {
+		width: 800px;
+	}
+	
+	#pw a:hover {
+		text-decoration: underline;
+	}
+	
+	#signup {
+		margin-top: 30px;
+		text-align: center;
+	}
+	
+	#signup div {
+		font-size: 1.2em;
+		font-weight: bold;
+		margin-bottom: 20px;
 	}
 	
 </style>
@@ -35,18 +44,32 @@
 	
 		<h1>HelpMe Helper!!(로고)</h1>
 		
-		<div class="info">원하는 사용자로 로그인 해주세요.</div>	
-		<div class="user">
-			<img src="/helpme/resources/images/user.png" 
-				onclick="/helpme/loginok?id=user"/>
-			<div>유저 사용자</div>
-		</div>
-		
-		<div class="helper">
-			<img src="/helpme/resources/images/helper.png"
-				onclick="/helpme/loginok?id=helper"/>
-			<div>헬퍼 사용자</div>
-		</div>
+		<form method="POST" action="/helpme/member/loginok.action">
+			<div id="login">
+				<!-- 아이디 -->
+				<div id="id"">
+					<span style="margin-left: 30px; margin-right: 20px; font-weight: bold;">아이디</span>
+					<img src="https://img.icons8.com/ios-glyphs/30/000000/user-male-circle.png" style="margin-right: 20px;"/>
+					<input type="text" name="id" class="form-control" required placeholder="아이디" />
+					<input type="submit" class="btn btn-primary" value="로그인" style="margin-left: 20px;"/>
+				</div>
+				
+				<!-- 비밀번호 -->
+				<div id="pw">
+					<span style="margin-left: 85px; margin-right: 14px; font-weight: bold;">비밀번호</span>
+					<img src="https://img.icons8.com/material-rounded/30/000000/password1.png" style="margin-right: 20px;"/>
+					<input type="password" name="pw" class="form-control" required placeholder="비밀번호" />
+					<a href="/rural/member/loginfind.do" style="color: #aaa; margin-left: 20px;">아이디/비밀번호 찾기</a>
+				</div>
+			</div>
+		</form>
+				
+		<!-- end -->
+		<div id="signup">
+			<div>아직 회원이 아니신가요?</div>
+			<button type="button" class="btn btn-success"
+					onclick="#">회원가입 페이지 이동</button>
+		</div>		
 		
 	</div>
    

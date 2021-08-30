@@ -646,11 +646,25 @@ body.dark .logo img {
 					</button>
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-							<div style="float: right;">
-								<a class="nav-link" href="/helpme/member/login.action">로그인</a>
-								<a class="nav-link" href="#">회원가입</a>
-							</div>
+							
+							
+							<c:if test="${ not empty id }">
+								<div style="float: right;">
+									<c:if test="${ member.state eq '1' }">
+									<span>안녕하세요 ${ member.name }님(일반 사용자)</span>
+									</c:if>
+									<c:if test="${ member.state eq '2' }">
+									<span>안녕하세요 ${ member.name }님(헬퍼 사용자)</span>
+									</c:if>
+									<a class="nav-link" href="/helpme/member/logout.action">로그아웃</a>
+								</div>
+							</c:if>
+							<c:if test="${ empty id }">
+								<div style="float: right;">
+									<a class="nav-link" href="/helpme/member/login.action">로그인</a>
+									<a class="nav-link" href="#">회원가입</a>
+								</div>
+							</c:if>
 
 					</div>
 
@@ -666,7 +680,7 @@ body.dark .logo img {
 			<a class="category" href="#">홈/리빙</a>
 			<a class="category" href="#">과외/레슨</a>
 			<a class="category" href="#">이벤트</a>
-			<a class="category" href="#">디자인/개발</a>
+			<a class="category" href="/helpme/design/list.action">디자인/개발</a>
 			<a class="category" href="#">건강/미용</a>
 		    <a class="category" href="#">알바</a>
 

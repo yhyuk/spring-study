@@ -3,6 +3,15 @@
 
 <style>
 
+	.head {
+		font-size: 1.6em;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 10px;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+
 	.back {
 		text-align: right;
 		margin-bottom: 100px;
@@ -17,6 +26,7 @@
 
 </style>
 
+<div class="head">나의 요청 리스트</div>
 <!-- 일반 사용자 > 요청 목록 -->
 <c:forEach items="${ list }" var="list">
 
@@ -32,7 +42,9 @@
 		<tr>
 			<td>${ list.designSeq }</td>
 			<td>${ list.category }</td>
-			<td>${ list.title }</td>
+			<td>
+				<a href="/helpme/design/view.action?seq=${ list.designSeq }">${ list.title }</a>
+			</td>
 			<td>${ list.ability }</td>
 			<td>
 				<c:if test="${ list.isPass eq 'n' }">처리 대기</c:if>
@@ -44,4 +56,10 @@
 
 </c:forEach>
 
-<div class="back"><input type="button" class="btn btn-default" value="돌아가기" /></div>
+<div class="back"><input type="button" class="btn btn-default" value="돌아가기" 
+	onclick="location.href='/helpme/design/list.action';"/></div>
+	
+	
+	
+	
+	

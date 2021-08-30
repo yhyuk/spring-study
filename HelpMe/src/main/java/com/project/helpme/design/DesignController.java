@@ -1,7 +1,6 @@
 package com.project.helpme.design;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.project.helpme.CheckMember;
+
 @Controller
 public class DesignController {
 	
@@ -21,6 +22,10 @@ public class DesignController {
 
 	@RequestMapping(value = "/design/list.action", method = { RequestMethod.GET })
 	public String list(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+		
+		CheckMember cm = new CheckMember();
+		cm.check(req, resp);
+		
 		return "design.list";
 	}
 	
@@ -51,7 +56,7 @@ public class DesignController {
 		
 		if ( result == 1 ) {
 			try {
-				resp.sendRedirect("/helpme/design/list.action");
+				resp.sendRedirect("/helpme/design/mylist.action");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

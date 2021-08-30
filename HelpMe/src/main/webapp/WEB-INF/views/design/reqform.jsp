@@ -32,7 +32,7 @@
 	<table>
 		<tr>
 			<th>서비스</th>
-			<td><input type="text" name="category" class="form-control" value="${ service }" disabled style="width: 200px;"/></td>
+			<td style="text-align: left;">${ service }</td>
 		</tr>
 		<tr>
 			<th>제목</th>
@@ -65,20 +65,19 @@
 		<tr>
 			<th>희망 숙련도</th>
 			<td style="text-align: left;">
-				<input type="checkbox" name="ability" value="high" style="position: relative; top: 1.5px; margin-right: 5px;"
-					onclick='checkOnlyOne(this)'/>고급
-				<input type="checkbox"name="ability" value="middle" style="position: relative; top: 1.5px; margin-right: 5px;"
-					onclick='checkOnlyOne(this)'/>중급
-				<input type="checkbox" name="ability" value="begin" style="position: relative; top: 1.5px; margin-right: 5px;"
-					onclick='checkOnlyOne(this)'/>초급
-				<input type="checkbox" name="ability" value="not" style="position: relative; top: 1.5px; margin-right: 5px;"
-					onclick='checkOnlyOne(this)'/>상관없음
+				<input type="radio" name="ability" value="고급">고급
+				<input type="radio" name="ability" value="중급">중급
+				<input type="radio" name="ability" value="초급">초급
+				<input type="radio" name="ability" value="상관없음">상관없음
 			</td>
+			
+			
 		</tr>
 	
 	</table>
 	
-	<input type="hidden" name="id" value="testid"/>
+	<input type="hidden" name="category" value="${ service }"/>
+	<input type="hidden" name="id" value="${ id }"/>
 	
 	<div style="text-align: center; margin-top: 30px; margin-bottom: 100px;">
 		<input type="submit" value="작성하기" class="btn btn-success" />
@@ -90,16 +89,8 @@
 
 <script>
 
-	function checkOnlyOne(element) {
-	  
-		const checkboxes = document.getElementsByName("ability");
-	  
-	  	checkboxes.forEach((cb) => {
-	    	cb.checked = false;
-	  	})
-	  
-	  	element.checked = true;
-	}
+	var listVar = $('input[name=ability]:checked').val();
+	console.log(listVar);
 	
 
 </script>
