@@ -8,7 +8,7 @@
 		
 		<!-- DTO 별칭 -->
 		<typeAlias type="com.project.helpme.design.DesignDTO" alias="reqdto" />
-	
+		<typeAlias type="com.project.helpme.design.DesignAppDTO" alias="appdto" />
 	</typeAliases>
 	
    

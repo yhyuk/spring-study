@@ -3,6 +3,14 @@
 
 <style>
 
+	.head {
+		font-size: 1.6em;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 20px;
+		margin-top: 30px;
+	}
+
 	table {
 		margin-left:auto; 
     	margin-right:auto;
@@ -23,8 +31,7 @@
 
 </style>
 
-<h1>요청서 상세</h1>
-
+<div class="head">요청서 상세</div>
 <table class="table table-bordered">
 	<tr>
 		<th>서비스</th>
@@ -65,9 +72,18 @@
 </table>
 
 <div style="text-align: center; margin-top: 30px; margin-bottom: 100px;">
+	<c:if test="${ member.state eq '1' }">
 	<input type="button" value="삭제하기" class="btn btn-danger" 
 		onclick="del()"/>
 	<input type="button" value="수정하기" class="btn btn-success" />
+	</c:if>
+	
+	<c:if test="${ member.state eq '2' }">
+		<c:if test="${ dto.isPass eq 'n' }">
+		<input type="button" value="신청하기" class="btn btn-primary"
+			onclick="location.href='/helpme/design/appform.action?seq=${ dto.designSeq }'" />
+		</c:if>
+	</c:if>
 	<input type="button" value="돌아가기" class="btn btn-default" 
 		onclick="location.href='/helpme/design/mylist.action?id=${ id }';"/>
 </div>

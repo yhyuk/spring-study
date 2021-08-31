@@ -54,7 +54,7 @@ drop table tblAjaxMemo;
 create table tblAjaxMemo (
     seq number primary key,                 -- 번호
     id varchar2(10) not null,               -- 아이디
-    memo varchar2(1000) null,           -- 메모
+    memo varchar2(1000) null,               -- 메모
     regdate date default sysdate not null,  -- 작성시간
     left number default 0 not null,         -- 좌표(x)   
     top number default 0 not null,          -- 좌표(y)

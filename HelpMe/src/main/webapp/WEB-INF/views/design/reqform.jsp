@@ -4,6 +4,14 @@
 <!-- 일반 사용자 > 요청서 작성 -->
 <style>
 
+	.head {
+		font-size: 1.6em;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 20px;
+		margin-top: 30px;
+	}
+
 	table {
 		margin-left:auto; 
     	margin-right:auto;
@@ -25,8 +33,7 @@
 
 </style>
 
-
-<h1>요청서 작성</h1>
+<div class="head">요청서 작성</div>
 <form method="POST" action="/helpme/design/reqformok.action">
 
 	<table>

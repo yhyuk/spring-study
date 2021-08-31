@@ -20,9 +20,19 @@
 		delete from tblDesign where designSeq = #{ seq }
 	</delete>
 	
-	<!-- 요청서 상세보기 -->
+	<!-- 요청서 상세보기(일반) -->
 	<select id="reqView" parameterType="String" resultType="reqdto">
 		select * from tblDesign where designSeq = #{ seq }
 	</select>
+	
+	<!-- 전체 요청 리스트 보기(헬퍼) -->
+	<select id="reqList" resultType="reqdto">
+		select * from tblDesign order by designSeq desc
+	</select>
+	
+	<!-- 신청서 작성하기(헬퍼) -->
+	<insert id="appAdd" parameterType="appdto">
+		insert into tblDesignReq
+	</insert>
 
 </mapper>

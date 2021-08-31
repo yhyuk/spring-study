@@ -20,8 +20,12 @@ public class DesignController {
 	
 	@Autowired
 	private DesignDAO dao;
+	
+	@Autowired
+	private DesignAppDAO hdao;
+	
 	/**
-	 * 디자인/개발 카테고리 메인화면
+	 * 디자인/개발 카테고리 메인화면(일반, 헬퍼)
 	 * 
 	 * @param req
 	 * @param resp
@@ -34,11 +38,25 @@ public class DesignController {
 		CheckMember cm = new CheckMember();
 		cm.check(req, resp);
 		
+		List<DesignDTO> list = dao.rqeList();
+		
+		for (DesignDTO dto : list) {
+			String startDay = dto.getStartDay();
+			String endDay = dto.getEndDay();
+			
+			startDay = startDay.substring(0, 10);
+			endDay = endDay.substring(0, 10);
+			
+			dto.setStartDay(startDay);
+			dto.setEndDay(endDay);
+		}
+		
+		req.setAttribute("list", list);
 		return "design.list";
 	}
 	
 	/**
-	 * 나의 요청서 리스트
+	 * 나의 요청서 리스트(일반)
 	 * 
 	 * @param req
 	 * @param resp
@@ -57,7 +75,7 @@ public class DesignController {
 	}
 	
 	/**
-	 * 요청서 작성하기
+	 * 요청서 작성하기(일반)
 	 * 
 	 * @param req
 	 * @param resp
@@ -74,7 +92,7 @@ public class DesignController {
 	}
 	
 	/**
-	 * 요청서 작성 완료
+	 * 요청서 작성 완료(일반)
 	 * 
 	 * @param req
 	 * @param resp
@@ -96,7 +114,7 @@ public class DesignController {
 	}
 	
 	/**
-	 * 요청서 삭제하기
+	 * 요청서 삭제하기(일반)
 	 * 
 	 * @param req
 	 * @param resp
@@ -117,7 +135,7 @@ public class DesignController {
 	}	
 	
 	/**
-	 * 요청서 상세보기
+	 * 요청서 상세보기(일반, 헬퍼)
 	 * 
 	 * @param req
 	 * @param resp
@@ -145,13 +163,35 @@ public class DesignController {
 		
 	}		
 	
-	
-	
+	/**
+	 * 신청서 작성하기(헬퍼)
+	 * 
+	 * @param req
+	 * @param resp
+	 * @param session
+	 * @param seq
+	 * @return
+	 */
 	@RequestMapping(value = "/design/appform.action", method = { RequestMethod.GET })
 	public String appform(HttpServletRequest req, HttpServletResponse resp, HttpSession session
-			, String service) {
-		req.setAttribute("service", service);
+			, String seq) {
+		req.setAttribute("seq", seq);
 		return "design.appform";
 	}
+	
+	
+	@RequestMapping(value = "/design/appformok.action", method = { RequestMethod.POST })
+	public void appformok(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+			, DesignAppDTO dto, String id) {
+		
+		hdao.appAdd(dto);
+		
+		try {
+			resp.sendRedirect("/helpme/design/mylist.action?id=" + id);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}	
+	
 	
 }

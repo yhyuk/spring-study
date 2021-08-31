@@ -36,9 +36,9 @@
 			<th>번호</th>
 			<th>카테고리</th>
 			<th>제목</th>
-			<th>숙련도</th>
+			<th>작성일자</th>
 			<th>처리상태</th>
-			<th>조회수</th>
+			<th>숙련도</th>
 			<th>수정/삭제하기</th>
 		</tr>
 		<c:forEach items="${ list }" var="list">
@@ -48,12 +48,12 @@
 			<td>
 				<a href="/helpme/design/reqview.action?seq=${ list.designSeq }">${ list.title }</a>
 			</td>
-			<td>${ list.ability }</td>
+			<td>${ list.regdate }</td>
 			<td>
 				<c:if test="${ list.isPass eq 'n' }">처리 대기</c:if>
 				<c:if test="${ list.isPass eq 'y' }">처리 완료</c:if>
 			</td>
-			<td>${ list.cnt }</td>
+			<td>${ list.ability }</td>
 			<td>
 				<input type="button" class="btn btn-primary" value="수정하기"/>
 				<input type="button" class="btn btn-danger" value="삭제하기"

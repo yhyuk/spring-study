@@ -7,7 +7,7 @@
 		font-size: 1.6em;
 		font-weight: bold;
 		text-align: center;
-		margin-bottom: 10px;
+		margin-bottom: 20px;
 		margin-top: 30px;
 	}
 	
@@ -22,7 +22,7 @@
 		margin-right: 20px;
 	}
 	
-	table {
+	#usertbl {
 		width:1200px;
 		margin-left:auto; 
     	margin-right:auto;
@@ -31,7 +31,7 @@
 		text-align: center;
 	}
 	
-	table tr td {
+	#usertbl tr td {
 		border: 1px solid #CCC;
 		cursor: pointer;
 	}
@@ -42,6 +42,14 @@
 	.title {
 		height: 50px;
 	}
+	
+	#helpertbl tr th:nth-child(1) { width: 70px; }
+	#helpertbl tr th:nth-child(2) { width: 200px; }
+	#helpertbl tr th:nth-child(3) { width: auto; }
+	#helpertbl tr th:nth-child(4) { width: 200px; }
+	#helpertbl tr th:nth-child(5) { width: 100px; }
+	#helpertbl tr th:nth-child(6) { width: 70px; }
+	#helpertbl tr th:nth-child(7) { width: 100px; }
 	
 </style>
 
@@ -59,7 +67,7 @@
 			onclick="location.href='/helpme/design/reqlist.action';"/>
 	</div>
 	
-	<table>
+	<table id="usertbl">
 		<tr class="img">
 			<td style="background-image: url( '/helpme/resources/images/design/development1.jpg' ); background-size: cover;"
 						onclick="location.href='/helpme/design/reqform.action?service=소프트웨어 개발';"></td>
@@ -107,4 +115,45 @@
 
 <!-- 헬퍼 사용자 -->
 <c:if test="${ member.state eq '2' }">
+
+<div class="head">요청 리스트</div>
+<div class="service">
+
+	<table id="helpertbl" class="table table-bordered">
+		<tr>
+			<th>번호</th>
+			<th>카테고리</th>
+			<th>제목</th>
+			<th>작성일자</th>
+			<th>처리상태</th>
+			<th>숙련도</th>
+			<th>신청하기</th>
+		</tr>
+		<c:forEach items="${ list }" var="list">
+		<tr>
+			<td>${ list.designSeq }</td>
+			<td>${ list.category }</td>
+			<td>
+				<a href="/helpme/design/reqview.action?seq=${ list.designSeq }">${ list.title }</a>
+			</td>
+			<td style="font-size: 14px; ">${ list.regdate }</td>
+			<td>
+				<c:if test="${ list.isPass eq 'n' }">처리 대기</c:if>
+				<c:if test="${ list.isPass eq 'y' }">처리 완료</c:if>
+			</td>
+			<td>${ list.ability }</td>
+			<td>
+				<c:if test="${ list.isPass eq 'n' }">
+				<input type="button" class="btn btn-primary" value="신청하기"
+					onclick="location.href='/helpme/design/appform.action?seq=${ list.designSeq }';"/>
+				</c:if>
+				<c:if test="${ list.isPass eq 'y' }">
+				<input type="button" class="btn btn-danger" value="신청불가" disabled />
+				</c:if>
+			</td>
+		</tr>
+		</c:forEach>
+	</table>
+
+</div>	
 </c:if>

@@ -8,6 +8,7 @@ public class DesignAppDTO {
 	private String seq;
 	private String pseq;
 	private String id;
+	private String title;
 	private String feedback;
 	private String request;
 	private String address;

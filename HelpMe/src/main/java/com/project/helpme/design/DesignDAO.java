@@ -28,6 +28,10 @@ public class DesignDAO {
 		return template.selectOne("design.reqView", seq);
 	}
 
+	public List<DesignDTO> rqeList() {
+		return template.selectList("design.reqList");
+	}
+
 	
 	
 }
