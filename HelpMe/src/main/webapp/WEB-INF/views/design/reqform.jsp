@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<th>제목</th>
-			<td><input type="text" name="title" class="form-control" style="width: 700px;" /></td>
+			<td><input type="text" name="title" class="form-control" style="width: 700px;" placeholder="제목을 입력해주세요."/></td>
 		</tr>
 		<tr>
 			<th>요청 내용</th>
@@ -60,7 +60,7 @@
 		</tr>
 		<tr>
 			<th>방문 희망 주소</th>
-			<td><input type="text" name="address" class="form-control" style="width: 300px;" /></td>
+			<td><input type="text" name="address" class="form-control" style="width: 400px;" placeholder="방문 주소를 입력해주세요.(기재 안하셔도 됩니다.)" /></td>
 		</tr>
 		<tr>
 			<th>희망 숙련도</th>

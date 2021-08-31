@@ -29,7 +29,7 @@
 
 <div class="head">나의 요청 리스트</div>
 <!-- 일반 사용자 > 요청 목록 -->
-<c:forEach items="${ list }" var="list">
+
 
 	<table class="table table-bordered">
 		<tr>
@@ -41,11 +41,12 @@
 			<th>조회수</th>
 			<th>수정/삭제하기</th>
 		</tr>
+		<c:forEach items="${ list }" var="list">
 		<tr>
 			<td>${ list.designSeq }</td>
 			<td>${ list.category }</td>
 			<td>
-				<a href="/helpme/design/view.action?seq=${ list.designSeq }">${ list.title }</a>
+				<a href="/helpme/design/reqview.action?seq=${ list.designSeq }">${ list.title }</a>
 			</td>
 			<td>${ list.ability }</td>
 			<td>
@@ -59,9 +60,10 @@
 					onclick="del(${ list.designSeq })"/>
 			</td>
 		</tr>
+		</c:forEach>
 	</table>
 
-</c:forEach>
+
 
 <div class="back"><input type="button" class="btn btn-default" value="돌아가기" 
 	onclick="location.href='/helpme/design/list.action';"/></div>
@@ -71,7 +73,7 @@
 	function del(seq) {
 	    let result = confirm("정말 삭제하시겠습니까?");
 	    if (result) {
-	       location.href = "/helpme/design/delformok.action?seq="+ seq;
+	       location.href = "/helpme/design/delformok.action?seq=" + seq;
 	    } else {
 	    	
 		}

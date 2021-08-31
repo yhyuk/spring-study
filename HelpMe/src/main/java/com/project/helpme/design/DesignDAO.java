@@ -24,6 +24,10 @@ public class DesignDAO {
 		template.delete("design.reqDel", seq);
 	}
 
+	public DesignDTO reqView(String seq) {
+		return template.selectOne("design.reqView", seq);
+	}
+
 	
 	
 }
