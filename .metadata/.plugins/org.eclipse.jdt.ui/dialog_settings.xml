@@ -85,4 +85,6 @@
 	<section name="ClasspathContainerSelectionPage">
 		<item key="index" value="2"/>
 	</section>
+	<section name="BreadcrumbItemDropDown">
+	</section>
 </section>

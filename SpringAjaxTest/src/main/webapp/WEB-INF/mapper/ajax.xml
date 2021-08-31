@@ -107,4 +107,18 @@
 		select * from tblAjaxMemo order by seq desc
 	</select>
 	
+	
+	<update id="editMemo" parameterType="com.test.ajax.MemoDTO">
+		update tblAjaxMemo set
+			left = #{left},
+			top = #{top},
+			zindex = #{zindex},
+			memo = #{memo}
+				where id = #{id}
+	</update>
+	
+	<delete id="delMemo" parameterType="String">
+		delete from tblAjaxMemo where id = #{id}
+	</delete>
+	
 </mapper>

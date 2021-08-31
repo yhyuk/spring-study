@@ -101,4 +101,12 @@ public class AjaxDAO {
 		return template.selectList("ajax.listMemo");
 	}
 
+	public int editMemo(MemoDTO dto) {
+		return template.update("ajax.editMemo", dto);
+	}
+
+	public int delMemo(String id) {
+		return template.delete("ajax.delMemo", id);
+	}
+
 }

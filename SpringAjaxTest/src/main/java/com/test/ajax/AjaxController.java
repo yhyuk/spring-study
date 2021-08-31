@@ -332,7 +332,30 @@ public class AjaxController {
 		return result;
 	}
 	
+	// 1. 메모 이동 > (id, left, top) > DB 반영 
+	// 2. 메모 z-index 변경 > (id, zindex) > DB 반영
+	// 3. 메모 내용 수정 > ( id, memo) > DB 반영
+	// --------------------------------------------------------------
+	// 4. 메모 삭제 > DB 반영
+	@RequestMapping(value = "/memo/edit.action", method = { RequestMethod.POST })
+	@ResponseBody
+	public int edit(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+					, MemoDTO dto) {
+		
+		int result = dao.editMemo(dto);
+		
+		return result;
+	}	
 	
+	@RequestMapping(value = "/memo/del.action", method = { RequestMethod.POST })
+	@ResponseBody
+	public int delMemo(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+					, String id) {
+		
+		int result = dao.delMemo(id);
+		
+		return result;
+	}	
 	
 	
 	

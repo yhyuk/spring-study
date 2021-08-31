@@ -46,26 +46,42 @@ public class DesignController {
 		req.setAttribute("service", service);
 		return "design.reqform";
 	}
-
+	
 	@RequestMapping(value = "/design/reqformok.action", method = { RequestMethod.POST })
 	public void reqformok(HttpServletRequest req, HttpServletResponse resp, HttpSession session
 			, DesignDTO dto) {
 		
-		int result = dao.reqAdd(dto);
-		System.out.println(dto);
+		dao.reqAdd(dto);
 		
-		if ( result == 1 ) {
-			try {
-				resp.sendRedirect("/helpme/design/mylist.action");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
+		try {
+			resp.sendRedirect("/helpme/design/mylist.action");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 	}
 	
-	
+	/**
+	 * 요청서 삭제하기
+	 * 
+	 * @param req
+	 * @param resp
+	 * @param session
+	 * @param seq
+	 */
+	@RequestMapping(value = "/design/delformok.action", method = { RequestMethod.GET })
+	public void delformok(HttpServletRequest req, HttpServletResponse resp, HttpSession session
+			, String seq) {
+		
+		dao.reqDel(seq);
+		
+		try {
+			resp.sendRedirect("/helpme/design/mylist.action");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}	
 	
 	
 	@RequestMapping(value = "/design/appform.action", method = { RequestMethod.GET })

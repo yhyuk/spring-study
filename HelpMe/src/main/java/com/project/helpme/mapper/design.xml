@@ -4,13 +4,20 @@
 
 <mapper namespace="design">
 	
+	<!-- 요청서 작성하기(일반) -->
 	<insert id="reqAdd" parameterType="reqdto">
 		insert into tblDesign (designSeq, id, category, title, ask, plan, refer, regdate, startDay, endDay, address, ability, isPass, cnt)
     		values (designSeq.nextVal, #{id}, #{category}, #{title}, #{ask}, #{plan}, #{refer}, default, #{startDay}, #{endDay}, #{address}, #{ability}, default, default)
 	</insert>
 	
+	<!-- 요청서 목록 보기(일반) -->
 	<select id="myList" parameterType="String" resultType="reqdto">
 		select * from tblDesign where id = #{ id } order by designSeq desc
 	</select>
+	
+	<!-- 요청서 삭제하기(일반) -->
+	<delete id="reqDel" parameterType="String">
+		delete from tblDesign where designSeq = #{ seq }
+	</delete>
 
 </mapper>

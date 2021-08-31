@@ -12,12 +12,16 @@ public class DesignDAO {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public int reqAdd(DesignDTO dto) {
-		return template.insert("design.reqAdd", dto);
+	public void reqAdd(DesignDTO dto) {
+		template.insert("design.reqAdd", dto);
 	}
 
 	public List<DesignDTO> myList(String id) {
 		return template.selectList("design.myList", id);
+	}
+
+	public void reqDel(String seq) {
+		template.delete("design.reqDel", seq);
 	}
 
 	
