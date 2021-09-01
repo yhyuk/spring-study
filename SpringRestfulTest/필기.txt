@@ -1,0 +1,74 @@
+
+	RESTful API
+		- REST API
+		- REST 아키텍처를 구현한 API (*아키텍처란? 시스템구조를 뜻함)
+		- HTTP 기반의 웹 기술 구현
+	
+	REST
+	[ 정의 ]
+		- Reperesentatinonal State Transfer
+		- 웹 상의 자원(데이터)을 자원의 이름으로 표현해서 자원의 상태(값, 정보)를 주고 받는 행위
+		- HTTP URI를 통해 자원을 명시하고, HTTP Method를 통해 해당 자원에 대한 CRUD 처리를 적용한다.
+	
+	[ REST 수업 목표 ] 
+		-> 기존에 웹상의 데이터를 접근하는 방식에서 
+		-> 수정된 REST 방식의 접근 방법을 배운다.
+		
+	[ REST API 설계 규칙 ]
+		- URI에서 자원을 표시한다.
+		- URI에 동사(list, add, ...)를 표시하지 않는다.
+		- HTTP Method를 사용해서 행동을 표시한다. (https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)
+			a. GET		: 리소스 요청(주세요~)
+			b. POST		: 데이터 생성
+			c. PUT		: 데이터 수정(전체 수정)
+			d. PATCH	: 데이터 수정(일부 수정)
+			e. DELETE	: 데이터 삭제
+	
+		- URI + HTTP Method = 완성
+		- 구분자는 '/'를 사용한다.
+		- URI 마지막에 '/'를 적지 않는다.
+			- http://localhost/board	(O)
+			- http://localhost/board/ 	(X)
+		- '-'(하이픈)를 간간히 사용한다.
+		- '_'(언더바)는 사용하지 않는다. (에러가 나진 않지만, 가독성 때문에 쓰이지 않는다.)
+		- 파일 확장자를 사용하지 않는다.
+		- 반환하는 데이터는 주로 데이터만 반환한다. (**************)
+			> HTML 소스 반환  (X) > 페이지 반환		> 사용 범위 > 브라우저 한정..
+			> 순수 데이터 반환(O) > XML, JSON 반환	> 사용 범위 > 다양해짐..(웹, 모바일, 기타 플랫폼, ..)
+			
+		- Ajax 수업 떄의 서버
+		- OpenAPI > REST 방식으로 구현: URL 명확 & 반환값 범용 포맷(XML, JSON)
+	
+	
+	1. 기존 방식
+		- http://localhost/board/list.do 				: 목록		- GET
+		- http://localhost/board/add.do  				: 글쓰기 	- POST
+		- http://localhost/board/edit.do?seq=1			: 수정하기	- POST
+		- http://localhost/board/del.do?seq=1			: 삭제하기	- GET
+		- http://localhost/board/list.do?word=검색어	: 검색		- GET
+	
+	2. REST (정답은 없다)
+		- http://localhost/board			: 목록		- GET
+		- http://localhost/board			: 글쓰기	- POST
+		- http://localhost/board/:id		: 수정하기	- PUT
+		- http://localhost/board/:id		: 삭제하기	- DELETE
+		- http://localhost/board/검색어		: 검색		- GET
+		
+	기존 우리가 알던 URI에서 어떤 업무인지 알고있었지만,
+	REST는 URI에서는 알기 어렵지만 요청하는 Method를 확인해서 어떤 업무인지 알 수 있다.
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
