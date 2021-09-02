@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class DesignAppDTO {
 	
-	private String seq;
-	private String pseq;
+	private String designSeq;
+	private String designSeq2;
 	private String id;
 	private String title;
 	private String feedback;
@@ -16,5 +16,9 @@ public class DesignAppDTO {
 	private String attend;
 	private String regdate;
 	private String isReq;
+	
+	private String name;
+	private String category;
+	private String isPass;
 
 }

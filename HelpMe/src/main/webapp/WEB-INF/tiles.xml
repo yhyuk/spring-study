@@ -5,9 +5,16 @@
 <!-- tiles는 모든 것이 이 파일 안에서 구현된다. -->
 <tiles-definitions>
 
-	<!-- 모든 페이지에서 사용할 공통 템플릿 -->
+	<!-- 메인 페이지에서 사용할 공통 템플릿 -->
+	<definition name="main.*" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+		<put-attribute name="inner" value="/WEB-INF/views/inc/inner.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/index.jsp" />
+	</definition>
 
-
+	<!-- 로그인 페이지에서 사용할 공통 템플릿 -->
 	<definition name="member.login" template="/WEB-INF/views/layout/login.jsp">
 		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp" />
 		<put-attribute name="content" value="/WEB-INF/views/member/login.jsp" />
@@ -43,7 +50,7 @@
 	</definition>	
 	
 	<!-- 건강/미용 페이지에서 사용할 공통 템플릿 -->
-	<definition name="health.*" template="/WEB-INF/views/layout/template.jsp">
+	<definition name="health.*" template="/WEB-INF/views/health/healthtemp.jsp">
 	
 		<!-- 공용 조각 페이지 -->
 		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp" />
@@ -52,10 +59,12 @@
 		<put-attribute name="inner" value="/WEB-INF/views/inc/inner.jsp" />
 		
 		<!-- 주 업무 페이지 -->
-		<put-attribute name="content" value="/WEB-INF/views/health/{1}.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/health/{1}.jsp"/>
 		
 	</definition>	
-	
+	<!-- 요청서 상세보기 모달페이지  -->
+	<definition name="healthview" template="/WEB-INF/views/health/healthview.jsp"/>
+		
 	<!-- 홈/가구 페이지에서 사용할 공통 템플릿 -->
 	<definition name="home.*" template="/WEB-INF/views/layout/template.jsp">
 	
@@ -84,19 +93,24 @@
 		
 	</definition>
 		
-	<!-- 레슨 페이지에서 사용할 공통 템플릿 -->
-	<definition name="lesson.*" template="/WEB-INF/views/layout/template.jsp">
-	
-		<!-- 공용 조각 페이지 -->
-		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp" />
-		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
-		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
-		<put-attribute name="inner" value="/WEB-INF/views/inc/inner.jsp" />
-		
-		<!-- 주 업무 페이지 -->
-		<put-attribute name="content" value="/WEB-INF/views/lesson/{1}.jsp"></put-attribute>
-		
-	</definition>	
-	
+  	<definition name="lesson.*" template="/WEB-INF/views/layout/template_lesson.jsp">
+   
+	      <!-- 공용 조각 페이지 -->
+	      <put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp" />
+	      <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+	      <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+	      <put-attribute name="inner" value="/WEB-INF/views/inc/inner.jsp" />
+      
+	      <!-- 주 업무 페이지 -->
+	      <put-attribute name="content" value="/WEB-INF/views/lesson/{1}.jsp"></put-attribute>
+      
+   	</definition>   
+   	
+    <definition name="chat.*" template="/WEB-INF/views/layout/template_chat.jsp">
+	     <!-- 공용 조각 페이지 -->
+	     <put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp" />
+	     <!-- 주 업무 페이지 -->
+	     <put-attribute name="content" value="/WEB-INF/views/lesson/{1}.jsp"></put-attribute>
+   	</definition>   
 
 </tiles-definitions>

@@ -20,10 +20,13 @@
 	table tr th:nth-child(1) { width: 70px; }
 	table tr th:nth-child(2) { width: 150px; }
 	table tr th:nth-child(3) { width: auto; }
-	table tr th:nth-child(4) { width: 100px; }
-	table tr th:nth-child(5) { width: 150px; }
-	table tr th:nth-child(6) { width: 70px; }
+	table tr th:nth-child(4) { width: 150px; }
+	table tr th:nth-child(5) { width: 100px; }
+	table tr th:nth-child(6) { width: 100px; }
 	table tr th:nth-child(7) { width: 200px; }
+	table tr th:nth-child(8) { width: 100px; }
+	
+	table tr:hover { background-color: #EEE; }
 
 </style>
 
@@ -37,9 +40,10 @@
 			<th>카테고리</th>
 			<th>제목</th>
 			<th>작성일자</th>
-			<th>처리상태</th>
 			<th>숙련도</th>
+			<th>처리상태</th>
 			<th>수정/삭제하기</th>
+			<th>신청리스트</th>
 		</tr>
 		<c:forEach items="${ list }" var="list">
 		<tr>
@@ -49,15 +53,21 @@
 				<a href="/helpme/design/reqview.action?seq=${ list.designSeq }">${ list.title }</a>
 			</td>
 			<td>${ list.regdate }</td>
-			<td>
-				<c:if test="${ list.isPass eq 'n' }">처리 대기</c:if>
-				<c:if test="${ list.isPass eq 'y' }">처리 완료</c:if>
-			</td>
 			<td>${ list.ability }</td>
+			<td>
+				<c:if test="${ list.isPass eq 'n' }">대기중</c:if>
+				<c:if test="${ list.isPass eq 'y' || list.isPass eq 'x' }">완료</c:if>
+			</td>
 			<td>
 				<input type="button" class="btn btn-primary" value="수정하기"/>
 				<input type="button" class="btn btn-danger" value="삭제하기"
 					onclick="del(${ list.designSeq })"/>
+			</td>
+			<td>
+				<c:if test="${ list.isPass eq 'n' }">
+				<input type="button" class="btn btn-success" value="확인하기"
+					onclick="location.href='/helpme/design/reqlist.action?seq=${ list.designSeq }';" />
+				</c:if>
 			</td>
 		</tr>
 		</c:forEach>

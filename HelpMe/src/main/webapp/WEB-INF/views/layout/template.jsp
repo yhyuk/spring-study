@@ -15,7 +15,7 @@
 <style>
 
    .img-header {
-      background-image: url( "/helpme/resources/images/design/about.png" );
+      background-image: url( "/helpme/resources/images/home/home.png" );
       background-size: cover;
       margin-top: 100px; 
       object-fit: cover; 
@@ -34,7 +34,7 @@
 <body>
 	<div class="img-header">
 
-		<h1>디자인/개발</h1>
+		<h1>홈/리빙</h1>
 
 	</div>
 

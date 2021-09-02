@@ -45,11 +45,14 @@
 	
 	#helpertbl tr th:nth-child(1) { width: 70px; }
 	#helpertbl tr th:nth-child(2) { width: 200px; }
-	#helpertbl tr th:nth-child(3) { width: auto; }
-	#helpertbl tr th:nth-child(4) { width: 200px; }
-	#helpertbl tr th:nth-child(5) { width: 100px; }
-	#helpertbl tr th:nth-child(6) { width: 70px; }
+	#helpertbl tr th:nth-child(3) { width: 100px; }
+	#helpertbl tr th:nth-child(4) { width: auto; }
+	#helpertbl tr th:nth-child(5) { width: 150px; }
+	#helpertbl tr th:nth-child(6) { width: 100px; }
 	#helpertbl tr th:nth-child(7) { width: 100px; }
+	#helpertbl tr th:nth-child(8) { width: 100px; }
+	
+	#helpertbl tr:hover { background-color: #EEE; }
 	
 </style>
 
@@ -61,10 +64,8 @@
 <div class="service">
 
 	<div class="my">
-		<input type="button" value="나의 요청 리스트" class="btn btn-primary" 
+		<input type="button" value="나의 요청 목록" class="btn btn-primary" 
 			onclick="location.href='/helpme/design/mylist.action?id=${ id }';"/>
-		<input type="button" value="헬퍼 신청 리스트" class="btn btn-primary"
-			onclick="location.href='/helpme/design/reqlist.action';"/>
 	</div>
 	
 	<table id="usertbl">
@@ -119,10 +120,16 @@
 <div class="head">요청 리스트</div>
 <div class="service">
 
+	<div class="my">
+		<input type="button" value="나의 요청 목록" class="btn btn-primary" 
+			onclick="location.href='/helpme/design/helperlist.action?id=${ id }';"/>
+	</div>
+
 	<table id="helpertbl" class="table table-bordered">
 		<tr>
 			<th>번호</th>
 			<th>카테고리</th>
+			<th>작성자</th>
 			<th>제목</th>
 			<th>작성일자</th>
 			<th>처리상태</th>
@@ -133,6 +140,7 @@
 		<tr>
 			<td>${ list.designSeq }</td>
 			<td>${ list.category }</td>
+			<td>${ list.name }</td>
 			<td>
 				<a href="/helpme/design/reqview.action?seq=${ list.designSeq }">${ list.title }</a>
 			</td>
@@ -144,7 +152,7 @@
 			<td>${ list.ability }</td>
 			<td>
 				<c:if test="${ list.isPass eq 'n' }">
-				<input type="button" class="btn btn-primary" value="신청하기"
+				<input type="button" class="btn btn-success" value="신청하기"
 					onclick="location.href='/helpme/design/appform.action?seq=${ list.designSeq }';"/>
 				</c:if>
 				<c:if test="${ list.isPass eq 'y' }">
@@ -154,6 +162,10 @@
 		</tr>
 		</c:forEach>
 	</table>
+	
+	<div style="text-align: center;">
+		${ pagebar }
+	</div>
 
 </div>	
 </c:if>

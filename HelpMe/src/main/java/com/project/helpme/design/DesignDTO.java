@@ -19,5 +19,8 @@ public class DesignDTO {
 	private String ability;
 	private String isPass;
 	private String cnt;
+	
+	private String name;
+	private String isReq;
 
 }

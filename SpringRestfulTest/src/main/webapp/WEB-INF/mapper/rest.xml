@@ -8,7 +8,7 @@
 		select * from tblColor order by seq asc
 	</select>
 	
-	<select id="get" resultType="com.test.rest.ColorDTO" parameterType="String">
+	<select id="get" parameterType="String" resultType="com.test.rest.ColorDTO">
 		select * from tblColor where seq = #{seq}
 	</select>
 	
@@ -22,7 +22,11 @@
 			name = #{name},
 			rgb = #{rgb},
 			example = #{example}
-				where seq = #{seq}
+		where seq = #{seq}
 	</update>
+	
+	<delete id="del" parameterType="String">
+		delete from tblColor where seq = #{seq}
+	</delete>
 
 </mapper>

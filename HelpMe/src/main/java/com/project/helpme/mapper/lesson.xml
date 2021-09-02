@@ -2,5 +2,55 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="code">
+<mapper namespace="lesson">
+	
+		<!-- 댓글 쓰기 -->
+	<insert id="addkind" parameterType="lrdto">
+		insert into tbllessonreq values 
+		(lessonSeq.nextVal, #{kind},
+		 #{subkind}, #{address},
+		 #{begindate},#{enddate},#{hopeweek},
+		 #{hopetime},#{others},#{perpose},
+		 #{method},#{skill},#{id})
+	</insert>
+	
+	
+	<select id="reqlist" parameterType="String" resultType="lrdto">
+		
+		select * from tbllessonreq l inner join tblmember m on l.id=m.id where m.id = #{id}
+	
+	</select>
+	
+	<select id="reqlistdetail" parameterType="String" resultType="lrdto">
+		
+	select * from tbllessonreq where lessonseq = #{lessonSeq}
+	
+	</select>
+	
+	<select id="helplist" parameterType="String" resultType="lvdto">
+	select distinct (select avg(v.starpoint) from tblreview v where v.id=l.id group by v.id ) as starpoint,l.* from tbllesson l where l.lessonSeq=#{lessonSeq}
+	</select>
+	
+	<update id="matching" parameterType="String">
+	
+		update tbllesson set matching = '매칭완료' where lessonreqseq = #{lessonreqseq}
+	</update>
+
+	<select id="helperlist" parameterType="String" resultType="lrdto">
+		
+	select * from tbllessonreq where kind = #{kind}
+	
+	</select>
+	<select id="listcheck" parameterType="Object" resultType="lrdto">
+		
+	select * from tbllesson l inner join tbllessonreq r on l.lessonseq = r.lessonseq where l.id =  #{id}
+	
+	</select>
+	
+	<insert id="addlist" parameterType="lrdto">
+		insert into tbllesson values (seqlesson.nextVal,#{price},#{optoin},#{id},'대기중',#{carrer},#{lessonSeq})
+	</insert>
+	
+
+
 </mapper>

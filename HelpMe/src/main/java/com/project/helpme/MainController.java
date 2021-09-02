@@ -16,6 +16,11 @@ public class MainController {
 	
 	@Autowired
 	private MemberDAO dao;
+	
+	@RequestMapping(value = "/index.action", method = { RequestMethod.GET })
+	public String name(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+		return "main.index";
+	}
 
 	/**
 	 * 로그인 페이지 Controller
@@ -57,7 +62,7 @@ public class MainController {
 		}
 		
 		try {
-			resp.sendRedirect("/helpme/design/list.action");
+			resp.sendRedirect("/helpme/index.action");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

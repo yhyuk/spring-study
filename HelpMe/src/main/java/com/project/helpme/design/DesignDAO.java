@@ -1,5 +1,6 @@
 package com.project.helpme.design;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -28,10 +29,29 @@ public class DesignDAO {
 		return template.selectOne("design.reqView", seq);
 	}
 
-	public List<DesignDTO> rqeList() {
-		return template.selectList("design.reqList");
+	public List<DesignDTO> appList(HashMap<String, String> map) {
+		return template.selectList("design.appList", map);
 	}
 
-	
+	public List<DesignAppDTO> reqList(String seq) {
+		return template.selectList("design.reqList", seq);
+	}
+
+	public DesignAppDTO appView(String seq) {
+		return template.selectOne("design.appView", seq);
+	}
+
+	public void appOk(String seq) {
+		template.update("design.appOk", seq);
+	}
+
+	public void appNo(String seq) {
+		template.update("design.appNo", seq);
+	}
+
+	public int getTotalCount() {
+		return template.selectOne("design.getTotalCount");
+	}
+
 	
 }

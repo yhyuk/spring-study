@@ -74,13 +74,14 @@ body {
 }
 
 .navbar-brand img {
-	height: 28px;
-	width: auto;
-	display: block;
-	filter: brightness(10%);
+	height: 100px;
+	width: 100px;
+	margin-bottom: 100px;
+ 	filter: brightness(100%);
 	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
-}
+
+ }
 
 .navbar-toggler {
 	float: right;
@@ -625,6 +626,10 @@ body.dark .logo img {
 	margin-right: 100px;
 
 }
+
+#logo {
+
+}
 </style>
 
 
@@ -633,10 +638,14 @@ body.dark .logo img {
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<nav class="navbar navbar-expand-md navbar-light">
+				<nav class="navbar navbar-expand-md navbar-light" style="position: static;">
 
-					<a class="navbar-brand" href="https://front.codes/" target="_blank"><img
-						src="https://assets.codepen.io/1462889/fcy.png" alt=""></a>
+					<a class="navbar-brand" href="/helpme/index.action"><img
+						src="/helpme/resources/images/logo/helpme.png" style=" width: 100px;
+    height: 100px;
+    position: relative;
+    top: -25px;
+						"></a>
 
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
@@ -651,10 +660,10 @@ body.dark .logo img {
 							<c:if test="${ not empty id }">
 								<div style="float: right;">
 									<c:if test="${ member.state eq '1' }">
-									<span>안녕하세요 ${ member.name }님(일반 사용자)</span>
+									<span>안녕하세요 ${ member.name }님(<span style="color: cornflowerblue;">일반 사용자</span>)</span>
 									</c:if>
 									<c:if test="${ member.state eq '2' }">
-									<span>안녕하세요 ${ member.name }님(헬퍼 사용자)</span>
+									<span>안녕하세요 ${ member.name }님(<span style="color: tomato;">헬퍼 사용자</span>)</span>
 									</c:if>
 									<a class="nav-link" href="/helpme/member/logout.action">로그아웃</a>
 								</div>
@@ -677,11 +686,11 @@ body.dark .logo img {
 <div class="section full-height">
 	<div style="text-align:center; padding: 25px; background-color: #FAFAFA;">
 
-			<a class="category" href="#">홈/리빙</a>
-			<a class="category" href="#">과외/레슨</a>
+			<a class="category" href="/helpme/home/index.action">홈/리빙</a>
+			<a class="category" href="/helpme/lesson/main.action">과외/레슨</a>
 			<a class="category" href="#">이벤트</a>
 			<a class="category" href="/helpme/design/list.action">디자인/개발</a>
-			<a class="category" href="#">건강/미용</a>
+			<a class="category" href="/helpme/health/main.action">건강/미용</a>
 		    <a class="category" href="#">알바</a>
 
 	</div>

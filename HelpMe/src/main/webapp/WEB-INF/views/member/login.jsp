@@ -3,10 +3,10 @@
 <style>
 	.login {
    		text-align: center;
-   		margin-top: 200px;
+   		margin-top: 50px;
    	}
  	#login {
-		margin-top: 50px;
+		margin-top: 10px;
 		margin-left: 350px;
 	}
 	
@@ -42,12 +42,13 @@
 	
 	<div class="login">
 	
-		<h1>HelpMe Helper!!(로고)</h1>
+		<img src="/helpme/resources/images/logo/helpme.png" 
+			style="width: 200px; height: 200px;"/>
 		
 		<form method="POST" action="/helpme/member/loginok.action">
 			<div id="login">
 				<!-- 아이디 -->
-				<div id="id"">
+				<div id="id">
 					<span style="margin-left: 30px; margin-right: 20px; font-weight: bold;">아이디</span>
 					<img src="https://img.icons8.com/ios-glyphs/30/000000/user-male-circle.png" style="margin-right: 20px;"/>
 					<input type="text" name="id" class="form-control" required placeholder="아이디" />

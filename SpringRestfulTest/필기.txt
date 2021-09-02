@@ -59,7 +59,16 @@
 		
 		
 		
-		
+	RESTful API Client 구현
+	
+	1. Java(Servlet/Spring)
+		- 목록보기
+		- views > page.jsp // 웹 브라우저 페이지
+	
+	2. JavaScript(Ajax)
+		- 목록보기
+		- 추가하기
+		- views > spa.jsp // Single Page Application. 자바 스크립트 중심의 원 페이지 기법
 		
 		
 		

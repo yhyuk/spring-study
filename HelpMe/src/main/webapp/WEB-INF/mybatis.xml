@@ -9,6 +9,9 @@
 		<!-- DTO 별칭 -->
 		<typeAlias type="com.project.helpme.design.DesignDTO" alias="reqdto" />
 		<typeAlias type="com.project.helpme.design.DesignAppDTO" alias="appdto" />
+		<typeAlias type="com.project.helpme.home.HomeDTO" alias="dto" />
+		<typeAlias type="com.project.helpme.lesson.LessonReqDTO" alias="lrdto" />
+      	<typeAlias type="com.project.helpme.lesson.LessonReviewDTO" alias="lvdto" />
 	</typeAliases>
 	
    

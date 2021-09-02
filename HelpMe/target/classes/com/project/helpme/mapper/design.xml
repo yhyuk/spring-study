@@ -22,17 +22,105 @@
 	
 	<!-- 요청서 상세보기(일반) -->
 	<select id="reqView" parameterType="String" resultType="reqdto">
-		select * from tblDesign where designSeq = #{ seq }
+		select 
+			d.*,
+			m.name 
+		from tblDesign d
+			inner join tblMember m
+				on d.id = m.id
+		where designSeq = #{ seq }
 	</select>
 	
+	<!-- 해당 요청서에 신청한 헬퍼 리스트보기(일반) -->
+	<select id="reqList" parameterType="String" resultType="appdto">
+		select 
+		    r.*,
+		    m.name,
+		    d.isPass
+		from tblDesign d
+		    inner join tblDesignReq r
+		        on d.designSeq = r.designSeq2
+		    inner join tblMember m
+		        on d.id = m.id
+		where d.designSeq = #{ seq }
+	</select>
+	
+	<!-- 신청서 상세보기(일반) -->
+	<select id="appView" parameterType="String" resultType="appdto">
+		select 
+			r.*,
+			m.name 
+		from tblDesignReq r
+			inner join tblMember m
+				on r.id = m.id
+		where designSeq = #{ seq }
+	</select>
+	
+	<!-- 신청서 수락하기(일반)-->
+	<update id="appOk" parameterType="String">
+		update tblDesignReq set isReq = 'y' where designSeq = #{ seq }
+	</update>
+	
+	<!-- 신청서 거절하기(일반) -->
+	<update id="appNo" parameterType="String">
+		update tblDesignReq set isReq = 'x' where designSeq = #{ seq }
+	</update>
+	
 	<!-- 전체 요청 리스트 보기(헬퍼) -->
-	<select id="reqList" resultType="reqdto">
-		select * from tblDesign order by designSeq desc
+	<select id="appList" parameterType="hashmap" resultType="reqdto">
+		select * from 
+			(select c.*, rownum as rnum from 
+				(select 
+				    d.*,
+				    m.name 
+				from tblDesign d
+				    inner join tblMember m
+				        on d.id = m.id
+				order by designSeq desc) c)  
+		where rnum between #{ begin } and #{ end }
 	</select>
 	
 	<!-- 신청서 작성하기(헬퍼) -->
 	<insert id="appAdd" parameterType="appdto">
-		insert into tblDesignReq
+		insert into tblDesignReq (designSeq, designSeq2, title, id, feedback, request, address, price, attend, regdate, isReq)
+    		values (designReqSeq.nextVal, #{pseq}, #{title}, #{id}, #{feedback}, #{request}, #{address}, #{price}, #{attend}, default, default)
 	</insert>
+	
+	<!-- 신청서 목록보기(헬퍼) -->
+	<select id="helperList" parameterType="String" resultType="appdto">
+		select
+		    r.*,
+		    m.name,
+		    d.category,
+		    d.isPass
+		from tblDesign d
+		    inner join tblDesignReq r
+		        on d.designSeq = r.designSeq2
+		    inner join tblMember m
+		        on r.id = m.id
+		where r.id = #{ id }
+		order by r.designSeq desc
+	</select>
+	
+	
+	<!-- 요청서 수락하기(헬퍼) -->
+	<update id="reqOk" parameterType="String">
+		update tblDesign set isPass = 'y' where designSeq = #{ seq }
+	</update>
+	
+	<!-- 요청서 거절하기(헬퍼) -->
+	<update id="reqNo" parameterType="String">
+		update tblDesign set isPass = 'x' where designSeq = #{ seq }
+	</update>
+	
+	<!-- 신청서 삭제하기(헬퍼) -->
+	<delete id="appDel" parameterType="String">
+		delete from tblDesignReq where designSeq = #{ seq }
+	</delete>
+	
+	<!-- 요청서 총 개수(헬퍼) -->
+	<select id="getTotalCount" resultType="Integer">
+		select count(*) as total from tblDesign
+	</select>
 
 </mapper>

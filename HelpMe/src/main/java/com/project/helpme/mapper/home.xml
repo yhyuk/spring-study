@@ -2,5 +2,26 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="code">
+<mapper namespace="home">
+
+	<!-- 글쓰기 -->
+	<insert id="add" parameterType="dto">
+		insert into tblHome (homeSeq, id, title, content, service, isApply, regdate, area, building, roomCnt, address) 
+    			values (seqHome.nextVal, 'user',#{title},#{content},#{service},'n', default, #{area},#{building},${roomCnt},#{address})   
+	</insert>
+	
+	
+	<select id="getSeq" resultType="String">
+		select max(homeseq) from tblHome
+	</select> 
+	
+	<!-- 게시물 -->
+	<select id="list" resultType="dto" parameterType="String">
+
+		select * from tblHome order by homeSeq desc
+
+	</select>
+	
+
+
 </mapper>
