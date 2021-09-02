@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="SpringWebSocketTest" path="/spring" reloadable="true" source="org.eclipse.jst.jee.server:SpringWebSocketTest"/><Context docBase="HelpMe" path="/helpme" reloadable="true" source="org.eclipse.jst.jee.server:HelpMe"/><Context docBase="Code" path="/code" reloadable="true" source="org.eclipse.jst.jee.server:Code"/><Context docBase="SpringAjaxTest" path="/ajax" reloadable="true" source="org.eclipse.jst.jee.server:SpringAjaxTest"/><Context docBase="SpringRestfulTest" path="/rest" reloadable="true" source="org.eclipse.jst.jee.server:SpringRestfulTest"/></Host>
+      <Context docBase="SpringWebSocketTest" path="/spring" reloadable="true" source="org.eclipse.jst.jee.server:SpringWebSocketTest"/><Context docBase="HelpMe" path="/helpme" reloadable="true" source="org.eclipse.jst.jee.server:HelpMe"/><Context docBase="Code" path="/code" reloadable="true" source="org.eclipse.jst.jee.server:Code"/><Context docBase="SpringAjaxTest" path="/ajax" reloadable="true" source="org.eclipse.jst.jee.server:SpringAjaxTest"/><Context docBase="RestfulTest" path="/rest" reloadable="true" source="org.eclipse.jst.jee.server:RestfulTest"/></Host>
     </Engine>
   </Service>
 </Server>
