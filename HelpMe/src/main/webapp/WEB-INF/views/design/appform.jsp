@@ -67,7 +67,7 @@
 		</tr>
 	</table>
 	
-	<input type="hidden" name="pseq" value="${ seq }"/>
+	<input type="hidden" name="designSeq2" value="${ seq }"/>
 	<input type="hidden" name="id" value="${ id }"/>
 	
 	<div style="text-align: center; margin-top: 30px; margin-bottom: 100px;">

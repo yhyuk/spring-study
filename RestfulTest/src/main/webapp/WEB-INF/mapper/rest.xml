@@ -29,4 +29,16 @@
 		delete from tblColor where seq = #{seq}
 	</delete>
 
+	<!-- 스프링 트랜잭션 -->
+	<update id="addPoint">
+		update tblSpringMember set
+			point = point + 100
+				where id = 'hong'
+	</update>
+	
+	<insert id="addBoard" parameterType="String">
+		insert into tblSpringBoard (subject, id)
+			values (#{subject}, 'hong')
+	</insert>
+	
 </mapper>

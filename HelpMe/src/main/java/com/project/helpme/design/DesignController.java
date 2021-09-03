@@ -283,7 +283,6 @@ public class DesignController {
 			}
 			dto.setRegdate(regDay);
 		}
-		
 		req.setAttribute("list", list);
 		return "design.reqlist";
 	}	

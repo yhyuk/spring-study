@@ -57,7 +57,7 @@
 	기존 우리가 알던 URI에서 어떤 업무인지 알고있었지만,
 	REST는 URI에서는 알기 어렵지만 요청하는 Method를 확인해서 어떤 업무인지 알 수 있다.
 		
-		
+	------------------------------------------------------------------------------------------	
 		
 	RESTful API Client 구현
 	
@@ -70,9 +70,24 @@
 		- 추가하기
 		- views > spa.jsp // Single Page Application. 자바 스크립트 중심의 원 페이지 기법
 		
+	------------------------------------------------------------------------------------------	
+
+	Spring Transaction
+	- MyBatis + AOP + Transaction
+	
+	1. pom.xml
+		- Transaction (가져올 필요없음)		
+
+	2. root-context.xml
+	
+	3. servlet-context.xml
+		- transaction, aop	
 		
-		
-		
+	4. db.sql
+	
+	5. com.test.rest > TransactionController.java
+	
+	6. views > tx.jsp
 		
 		
 		

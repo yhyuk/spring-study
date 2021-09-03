@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<bean id="datasource"
 		class="org.apache.commons.dbcp.BasicDataSource">
@@ -34,5 +36,30 @@
 		<constructor-arg ref="sessionfactory"></constructor-arg>
 	</bean>
 	
-		
+	
+	<!-- 스프링 트랜잭션 설정 -->
+	<tx:annotation-driven 
+		transaction-manager="transactionManager" proxy-target-class="true" />
+	
+	<!-- 현재 DB 작업을 감시하다가 트랜잭션 처리 -->
+	<bean id="transactionManager" 
+      class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="log4j"/>
+	</bean>
+
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

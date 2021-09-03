@@ -52,15 +52,15 @@
 			<td>${ list.attend }</td>
 			<td>
 				<c:if test="${ list.isReq eq 'n' || list.isPass eq 'n' }">대기중</c:if>
-				<c:if test="${ list.isReq eq 'x' || list.isPass eq 'x' }">거절</c:if>
+				<c:if test="${ list.isReq eq 'x' && list.isPass eq 'x' }">거절</c:if>
 				<c:if test="${ list.isReq eq 'y' && list.isPass eq 'y' }">완료</c:if>
 			</td>
 			<td>
 				<c:if test="${ list.isReq eq 'n' }">
 				<input type="button" class="btn btn-primary" value="신청 수락"
-					onclick="ok(${ list.designSeq })"/>
+					onclick="ok(${ list.designSeq }, ${ list.designSeq2 })"/>
 				<input type="button" class="btn btn-danger" value="신청 거절"
-					onclick="no(${ list.designSeq })"/>
+					onclick="no(${ list.designSeq }, ${ list.designSeq2 })"/>
 				</c:if>
 				<c:if test="${ list.isReq eq 'y' }">
 					신청을 <span style="color: cornflowerblue; ">수락</span> 했습니다.
@@ -80,19 +80,19 @@
 	
 <script>
 
-	function ok(seq) {
+	function ok(seq, pseq) {
 	    let result = confirm("정말 수락하시겠습니까?");
 	    if (result) {
-	       location.href = "/helpme/design/appok.action?seq=" + seq + "&pseq=" + ${ dto.designSeq2 };
+	       location.href = "/helpme/design/appok.action?seq=" + seq + "&pseq=" + pseq;
 	    } else {
 	    	
 		}
 	}
 	
-	function no(seq) {
+	function no(seq, pseq) {
 	    let result = confirm("정말 거절하시겠습니까?");
 	    if (result) {
-	       location.href = "/helpme/design/appno.action?seq=" + seq + "&pseq=" + ${ dto.designSeq2 };
+	       location.href = "/helpme/design/appno.action?seq=" + seq + "&pseq=" + pseq;
 	    } else {
 	    	
 		}

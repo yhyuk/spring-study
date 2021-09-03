@@ -41,7 +41,7 @@
 		    inner join tblDesignReq r
 		        on d.designSeq = r.designSeq2
 		    inner join tblMember m
-		        on d.id = m.id
+		        on r.id = m.id
 		where d.designSeq = #{ seq }
 	</select>
 	
@@ -83,7 +83,7 @@
 	<!-- 신청서 작성하기(헬퍼) -->
 	<insert id="appAdd" parameterType="appdto">
 		insert into tblDesignReq (designSeq, designSeq2, title, id, feedback, request, address, price, attend, regdate, isReq)
-    		values (designReqSeq.nextVal, #{pseq}, #{title}, #{id}, #{feedback}, #{request}, #{address}, #{price}, #{attend}, default, default)
+    		values (designReqSeq.nextVal, #{designSeq2}, #{title}, #{id}, #{feedback}, #{request}, #{address}, #{price}, #{attend}, default, default)
 	</insert>
 	
 	<!-- 신청서 목록보기(헬퍼) -->
