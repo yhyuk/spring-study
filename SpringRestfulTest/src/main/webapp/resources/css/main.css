@@ -1,0 +1,66 @@
+/* main.css */
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin-bottom: 50px;	
+}
+
+body, table, th, td, a, p, div, span, li, button, input, textarea, select, option, h1, h2, h3, h4, h5, h6 {
+	color: #777;
+	font-family: 'Pretendard-Regular' !important;
+}
+
+h1 {
+	font-size: 24px;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #BBB;
+}
+
+h2 {
+	font-size: 20px;
+	padding-bottom: 5px;
+	margin-bottom: 15px;
+	border-bottom: 1px dashed #BBB;
+}
+
+h3 {
+	font-size: 16px;
+}
+
+
+
+.container {
+	
+	max-width: 700px;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

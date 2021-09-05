@@ -1,0 +1,143 @@
+RESTful API + DB(MyBatis) + JSON(jackson, json-simple)
+
+
+1. 새 프로젝트 생성
+- Spring MVC Project > "SpringRestfulTest" > "com.test.rest"
+
+2. pom.xml
+
+3. web.xml
+
+4. root-context.xml
+
+5. servlet-context.xml
+
+
+
+
+RESTful API
+- REST API
+- REST 아키텍처
+
+
+REST, Representational State Transfer
+- 웹상의 자원(데이터)을 자원의 이름으로 표현해서 자원의 상태(값, 정보)를 주고 받는 행위
+- HTTP URI를 통해 자원을 명시하고, HTTP Method를 통해 해당 자원에 대한 CRUD 처리를 적용한다.
+
+REST 수업 > 기존에 웹상의 데이터를 접근 하는 방식에서 > 수정된 REST 방식의 접근 방법을 배운다.
+
+
+샘플]
+1. 기존 방식
+- GET 	http://localhost/board/list.do 			: 목록
+- POST	http://localhost/board/add.do 			: 글쓰기
+- POST	http://localhost/board/edit.do?seq=1 		: 수정하기
+- GET	http://localhost/board/del.do?seq=1		: 삭제하기
+- GET	http://localhost/board/list.do?word=검색어	: 검색
+
+2. REST
+- GET 	http://localhost/board					: 목록
+- POST	http://localhost/board					: 글쓰기
+- PUT	http://localhost/board/:id				: 수정하기
+- DELETE http://localhost/board/:id				: 삭제하기
+- GET	http://localhost/board/검색어				: 검색
+
+
+REST API 설계 규칙
+1. URI에서 자원을 표시한다.
+2. URI에 동사를 표시하지 않는다.
+3. HTTP Method를 사용해서 행동을 표시한다.(2번 대신)
+	a. GET: 리소스 요청(주세요~)
+	b. POST: 데이터 생성
+	c. PUT: 데이터 수정(전체 수정)
+	d. PATCH: 데이터 수정(일부 수정)
+	e. DELETE: 데이터 삭제
+4. URI + HTTP Method = 완성
+5. 구분자는 '/'를 사용한다.
+6. URI에 마지막에 '/'를 적지 않는다.
+	- http://localhost/board/ (X)
+	- http://localhost/board (O)
+7. '-'를 간간히 사용한다.
+8. '_'은 사용하지 않는다.
+9. 파일 확장자를 사용하지 않는다.
+10. 반환하는 데이터는 주로 데이터만 반환한다.(*******)
+	- HTML 소스 반환(X) > 페이지 반환 > 사용 범위 > 브라우저 한정..
+	- 순수 데이터 반환(O) > XML, JSON 반환 > 사용 범위 > 다양해짐.. 웹, 모바일, 기타 플랫폼..
+
+
+A. Ajax 수업때의 서버
+B. OpenAPI > REST 방식으로 구현: URL 명확 & 반환값 범용 포맷(XML, JSON)
+
+
+
+
+
+RESTful API Client 구현
+1. Java(Servlet/Spring)
+- 목록보기
+- views > "page.jsp" //웹 브라우저 페이지
+
+2. JavaScript(Aajx)
+- 목록보기
+- 추가하기
+- views > "spa.jsp" //Single Page Application. 자바스크립트 중심의 원 페이지 기법
+
+
+
+
+
+Spring Transaction
+- MyBatis + AOP + Transaction
+
+1. pom.xml
+- Transaction(O) -> AOP(O) aspectj-weaver
+
+2. web.xml
+- Transaction(X)
+
+3. root-context.xml
+- Transaction(O) -> 어노테이션 + <bean>
+	
+4. servlet-context.xml
+- Transaction(O) > AOP(O)
+
+5. db.sql
+
+6. com.test.rest > "TransactionContoller.java"
+
+7. com.test.rest > "TransactionDAO.java"
+
+8. views > "tx.jsp"
+
+
+
+프로젝트
+-> 스프링 트랜잭션 추가
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
