@@ -1,0 +1,16 @@
+
+	스프링 파일 업로드
+	
+	
+	pom.xml
+	
+	web.xml
+	
+	root-context.xml
+	
+	servlet-context.xml
+	- X
+	
+	첨부 파일 저장 폴더 생성
+	- webapp > resources > files 폴더 미리 생성
+	
